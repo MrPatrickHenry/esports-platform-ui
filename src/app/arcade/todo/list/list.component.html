@@ -1,0 +1,14 @@
+<div class="main-content" fxLayout="row" fxLayoutAlign="center start" *ngIf="todoGroups">
+  <div fxFlex.gt-sm="15" fxFlex.gt-xs="15" fxFlex="1">
+  	<div>
+  	<mat-card class="p2">
+<h2>{{todoGroups.tournamentName}}</h2>
+<br>
+<p><strong>Start Date:</strong>{{todoGroups.startDate | date}}</p>
+<p><strong>End Date:</strong>{{todoGroups.endDate | date}}</p>
+
+  <a class="mat-ripple" mat-raised-button mat-ripple="" color="primary" [routerLink]="['/todo',todoGroups.shortTag]">To do</a>
+</mat-card>
+</div>
+</div>
+</div>

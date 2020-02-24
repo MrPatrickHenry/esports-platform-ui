@@ -1,0 +1,44 @@
+ <div class="content">
+	<h3>Update your Social Info</h3> 
+	<form>
+	   
+     <mat-form-field>
+                        <input type="text" placeholder="Facebook" #facebook matInput value="{{ users.facebook }}">
+                </mat-form-field>
+
+
+                <mat-form-field>
+			<input type="text" placeholder="YouTube" #youtube matInput value="{{ users.youtube }}">
+		</mat-form-field>
+		<mat-form-field>
+			<input type="text" placeholder="Instagram" #instagram matInput value="{{ users.instagram }}">
+		</mat-form-field>        
+		<mat-form-field>
+			<input type="text" #discord placeholder="Discord" matInput value="{{ users.discord }}">
+		</mat-form-field>      
+		<!-- TODO bring in from server list -->
+		<mat-form-field>
+			<input type="text" placeholder="Snapchat" #snapchat matInput value="{{ users.snapchat }}">
+		</mat-form-field>    
+		<mat-form-field>
+			<input type="text" placeholder="Twitter" #twitter matInput value="{{ users.twitter }}">
+		</mat-form-field> 
+				<mat-form-field>
+			<input type="text" placeholder="Twitch" #twitch matInput value="{{ users.twitch }}">
+		</mat-form-field>
+		<mat-form-field>
+			<input type="text" placeholder="Telegram" #telegram matInput value="{{ users.telegram }}">
+		</mat-form-field> 
+		<p>
+
+			<button mat-raised-button type="submit" color="primary" (click)="updateSocial(
+			facebook.value,
+                        youtube.value,
+			snapchat.value,
+			twitter.value,
+			twitch.value,
+			telegram.value,
+			discord.value,
+			instagram.value)"> Update </button>
+		</form>
+	</div>

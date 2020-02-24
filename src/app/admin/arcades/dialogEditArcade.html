@@ -1,0 +1,113 @@
+
+	<h1 mat-dialog-title>Edit Arcade: {{ arcade.arcadeName }}</h1>
+<mat-tab-group>
+  <mat-tab label="Details">
+	<mat-form-field>
+		<input type="text" placeholder="Arcade Name" #name matInput value="{{ arcade.arcadeName }}">
+	</mat-form-field>
+
+	<mat-form-field>
+		<input type="email" placeholder="Email" #email matInput value="{{ arcade.email }}">
+	</mat-form-field>
+
+	<mat-form-field>
+		<input type="tel" placeholder="Telephone NO:" #phone matInput value="{{ arcade.phone }}">
+	</mat-form-field> 
+
+
+	<mat-form-field>
+		<input type="text" placeholder="1st Line of Address" #Address1 required matInput value="{{ arcade.address1 }}">
+	</mat-form-field>
+
+
+	<mat-form-field>
+		<input type="text" placeholder="2nd Line of Address" #Address2 required matInput value="{{ arcade.address2 }}">
+	</mat-form-field>
+
+
+	<mat-form-field>
+		<input type="text" placeholder="Zip Code" #zipPost matInput required  value="{{ arcade.zip_postal }}">
+	</mat-form-field>
+
+	<mat-form-field>
+		<input type="text" placeholder="Full website URL" #website required matInput value="{{ arcade.website }}">
+	</mat-form-field>
+
+	<mat-form-field>
+		<input type="url" placeholder="Logo URL" #logo matInput value="{{ arcade.logo }}">
+		<mat-hint align="start"><strong>Full URL to logo</strong> </mat-hint>
+	</mat-form-field> 
+
+
+	<mat-form-field>
+		<textarea matInput #desc placeholder="Description of Arcade" value="{{ arcade.description }}"></textarea>
+		<mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+	</mat-form-field>  
+
+<mat-form-field>
+  <mat-label>License Type {{users.licensing}}</mat-label>
+  <mat-select #licensing placeholder="Home Arcade: {{users.licensing}}">
+    <mat-option *ngFor="let arcade of Liceenses" [value]="arcade.value" #homeArcade matInput>
+      {{arcade.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+
+	<mat-form-field>
+		<textarea matInput placeholder="Notes Not Public" #notes value="{{ arcade.notes }}"></textarea>
+		<mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+	</mat-form-field> 
+
+	<!-- TODO fix this -->
+
+
+	<section class="example-section">
+		<mat-checkbox class="example-margin" #active required value="{{arcade.active}}" >Active </mat-checkbox>
+	</section>
+  </mat-tab>
+  <mat-tab label="Social Info">
+    <mat-form-field>
+		<input type="text" #youtube placeholder="Full YouTubue Channel URL" matInput value="{{arcade.youtubeChannel}}">
+	</mat-form-field>
+	<mat-form-field>
+		<input type="text" #telegram matInput placeholder="Telegram" value="{{arcade.telegram}}">
+	</mat-form-field>
+
+	<mat-form-field>
+		<input type="text" #snapchat matInput placeholder="Snapchat" value="{{arcade.snapchat}}">
+	</mat-form-field>
+
+	<mat-form-field>
+		<input type="text" #twitter matInput placeholder="Twitter" value="{{arcade.twitter}}">
+	</mat-form-field>
+
+
+	<mat-form-field>
+		<input type="text" #discord matInput placeholder="Discord" value="{{arcade.discord}}">
+	</mat-form-field>
+  </mat-tab>
+</mat-tab-group>
+		
+	<input type="hidden" value="{{arcade.id}}" #aid>
+
+		<button mat-raised-button type="submit" color="secondary"  class="mat-raised-button mat-button-base mat-primary" 
+		(click)="arcadeUpdate(
+		aid.value,
+		name.value,
+		email.value,
+		phone.value,
+		Address1.value,	
+		zipPost.value,
+		website.value,
+		desc.value,
+		licensing.value,
+		notes.value,
+		active.value,
+		youtube.value,
+		telegram.value,
+		snapchat.value,
+		twitter.value,
+		discord.value)"> Update </button>
+

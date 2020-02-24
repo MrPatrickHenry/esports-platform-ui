@@ -1,0 +1,24 @@
+<h1 class="h2Val" style="margin-bottom:3% text-align:center">
+  Pistol Whip Bracket
+  <ng-container *ngIf=" renderedTree === 'se'">Elimination Bracket</ng-container>
+  <ng-container *ngIf=" renderedTree === 'de'">Double Elimination Example</ng-container>
+  <br>
+<!--   <button (click)="renderedTree = 'se'">Show Single Elimination</button>
+  <button (click)="renderedTree = 'de'">Show Double Elimination</button> -->
+</h1>
+
+
+
+<ng-container *ngIf="renderedTree === 'se'">
+  <ngtt-single-elimination-tree [tournament]="singleEliminationTournament" [matchTemplate]="matchTemplate"></ngtt-single-elimination-tree>
+</ng-container>
+
+<!-- not needed for while so will hide for now -->
+
+<!-- <ng-container *ngIf="renderedTree === 'de'">
+  <ngtt-double-elimination-tree [tournament]="doubleEliminationTournament" [matchTemplate]="matchTemplate"></ngtt-double-elimination-tree>
+</ng-container> -->
+
+<ng-template #matchTemplate let-match>
+<!--   <app-match [match]="match"></app-match>
+ --></ng-template>

@@ -1,0 +1,100 @@
+<div class="container">
+	<h1> Search Results</h1>
+
+
+	<!-- Arcades -->
+	<mat-card  *ngIf="(arcadeSearchResults)">
+		<mat-card-title><h2 class="h2Val">Arcades</h2> </mat-card-title>
+
+		<ul>
+			<li *ngFor="let arcade of arcadeSearchResults">
+				<img src="https://storage.googleapis.com/filestorage_valvr2020/" class="logo">
+<a  mat-ripple="" color="primary" [routerLink]="['/arcade/profile/',arcade.shorttag]" {{arcade.name}}></a></li>
+			</ul>
+		</mat-card>
+		<!-- People -->
+		<mat-card 
+		*ngIf="(playerSearchResults)">
+		<mat-card-title><h2 class="h2Val">Players</h2> </mat-card-title>
+		<mat-card-content>
+			<div class="row" fxLayout="row wrap">
+<!-- <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="30" fxFlex.lg="30" fxFlex.xl="30">
+-->	<mat-card *ngFor="let player of playerSearchResults">
+	<mat-card-title>
+		<h2 class="h2Val">	 
+			<a [routerLink]="['/player/profile/',player.gamerTag]"> {{player.gamerTag}}</a>
+		</h2>
+	</mat-card-title>
+	<mat-card-content>
+	</mat-card-content>
+</mat-card>
+<!-- </div>
+--></div>
+</mat-card-content>
+</mat-card>
+<!-- title -->
+<mat-card *ngIf="(titleSearchResults)">
+	<mat-card-title><h2 class="h2Val">Titles</h2></mat-card-title>
+
+	<mat-card-content>
+	<div class="row" fxLayout="row wrap">
+		 <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="30" fxFlex.lg="30" fxFlex.xl="30">
+
+		<mat-card *ngFor="let title of titleSearchResults">
+			<mat-card-title><h2 class="h2Val">	
+				<a [routerLink]="['/title/',title.shorttag]"> {{title.name}}</a></h2></mat-card-title>
+				<mat-card-content>
+					{{title.desc}}
+				</mat-card-content>
+
+			</mat-card>
+		</div>
+</div>
+
+		</mat-card-content>
+	</mat-card>
+
+
+	<!-- tournaments -->
+	<mat-card *ngIf="(tournamentSearchResults)">
+<mat-card-title><h2 class="h2Val">Tournaments</h2></mat-card-title>
+<mat-card-content>
+<div class="row" fxLayout="row wrap">
+
+		<mat-card *ngFor="let tournament of tournamentSearchResults">
+			<mat-card-title>
+				<h2 class="h2Val">	
+<a [routerLink]="['/tournament/',tournament.shorttag]"> {{tournament.name}}</a></h2>
+			</mat-card-title>
+				<mat-card-content>
+					{{tournament.name}}
+				</mat-card-content>
+
+		</mat-card>
+	</div>
+		</mat-card-content>
+		</mat-card>
+
+
+		<!-- Content Locker -->
+
+		<mat-card *ngIf="(contentSearchResults)">
+			<mat-card-title>
+				<h2 class="h2Val">Content Locker</h2>
+			</mat-card-title>
+			<mat-card-content>
+			<div class="row" fxLayout="row wrap">
+<mat-card>
+					<ul>
+				<li *ngFor="let content of contentSearchResults">
+<a  mat-ripple="" color="primary" [routerLink]="['/content/video/',content.id]"> {{content.name}}</a></li>
+				</ul>
+			</mat-card>	
+				</div>
+			</mat-card-content>
+			</mat-card>
+
+
+
+
+		</div>

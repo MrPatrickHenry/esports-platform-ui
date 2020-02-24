@@ -1,0 +1,77 @@
+
+        <div class="mat-elevation-z8">
+
+<mat-toolbar>
+<button disabled mat-flat-button color="accent"> 
+<span>Create a Title</span>
+</button>
+
+</mat-toolbar>
+<mat-form-field class="filter">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+
+                
+        <table mat-table matSort [dataSource]="dataSource">
+
+    <ng-container matColumnDef="menu">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
+      <td mat-cell *matCellDef="let titles" >
+       <button mat-button [matMenuTriggerFor]="menu">
+        <i class="material-icons">more_vert</i>
+       </button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item disabled >Edit</button>
+  <button mat-menu-item disabled >Deactivate</button>
+</mat-menu>
+
+         <span>{{titles.id}}</span> </td>
+
+    </ng-container>
+
+                <ng-container matColumnDef="developer">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Developer ID. </th>
+                        <td mat-cell *matCellDef="let titles" >{{titles.developer}} </td>
+                       
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let titles"> {{titles.name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="player_Count">
+                        <th mat-header-cell *matHeaderCellDef> Player Count </th>
+                        <td mat-cell *matCellDef="let titles">
+						{{titles.player_Count}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="game_Type">
+                        <th mat-header-cell *matHeaderCellDef> Game Genere </th>
+                        <td mat-cell *matCellDef="let titles"> {{titles.game_Type}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="shortTag">
+                        <th mat-header-cell *matHeaderCellDef> shortTag </th>
+                        <td mat-cell *matCellDef="let titles"> {{titles.shortTag}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="active">
+                        <th mat-header-cell *matHeaderCellDef> Active </th>
+                        <td mat-cell *matCellDef="let titles"> <span *ngIf='titles.active === 1' style="color:green;">
+    <i class="material-icons">flag</i></span>
+    <span *ngIf='titles.active === 0' style="color:red;">
+        <i class="material-icons">flag</i></span>  </td>
+                </ng-container>
+
+			
+				<tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator  [pageSize]="10" [pageSizeOptions]="[5, 10, 25,50,100]" showFirstLastButtons></mat-paginator>
+</div>
+
+<app-footer></app-footer>

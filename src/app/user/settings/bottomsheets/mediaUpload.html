@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3>Choose File</h3>
+            <p>2MB Limit</p>            
+            <div class="form-group">
+                <input type="file" name="file" (change)="fileProgress($event)" style="
+border-radius: 0px !important;
+font-size: 20px;
+text-transform: uppercase;"/>
+            </div>
+
+            <div class="image-preview mb-3" *ngIf="previewUrl">
+                <img [src]="previewUrl" height="300" />                 
+            </div>
+
+            <div class="form-group">
+                <button mat-raised-button type="submit" color="primary"  (click)="onSubmit()">Upload</button>
+            </div>
+        </div>
+    </div>
+</div>

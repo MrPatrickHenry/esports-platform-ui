@@ -1,0 +1,91 @@
+
+	<div class="mat-elevation-z8">
+
+
+<mat-form-field class="filter">
+	<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+
+		
+	<table mat-table matSort [dataSource]="dataSource">
+
+    <ng-container matColumnDef="menu">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
+      <td mat-cell *matCellDef="let users" >
+       <button mat-button [matMenuTriggerFor]="menu">
+       	<i class="material-icons">more_vert</i>
+       </button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item disabled >Edit</button>
+  <button mat-menu-item disabled >Deactivate</button>
+
+<!--   <button mat-menu-item (click)="showAttendees(tournaments.id,'Admin','Arcade Owner')">See Hosts</button>
+    <button mat-menu-item (click)="showAttendees(tournaments.id,'Admin','Player')">See Players</button>
+ -->
+</mat-menu>
+
+
+         <span>{{users.id}}</span> </td>
+
+
+    </ng-container>
+
+		<ng-container matColumnDef="id">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header> ID. </th>
+			<td mat-cell *matCellDef="let users" >
+		       
+		</ng-container>
+
+		<ng-container matColumnDef="name">
+			<th mat-header-cell *matHeaderCellDef> Name </th>
+			<td mat-cell *matCellDef="let users"> {{users.name}} </td>
+		</ng-container>
+
+                <ng-container matColumnDef="gamertag">
+                        <th mat-header-cell *matHeaderCellDef> Gamer Tag </th>
+                        <td mat-cell *matCellDef="let users">
+
+                        	<a [routerLink]="['/player/profile/', users.gamertag]" class="choice accent">{{users.gamertag}} </a>
+                        <!-- <a [routerLink]="'[/player/profile/',users.gamertag]"class="choice accent"> {{users.gamertag}}</a>  --></td>
+                </ng-container>
+
+				<ng-container matColumnDef="email">
+			<th mat-header-cell *matHeaderCellDef> Email </th>
+			<td mat-cell *matCellDef="let users"> {{users.email}} </td>
+		</ng-container>
+
+
+				<ng-container matColumnDef="phone">
+			<th mat-header-cell *matHeaderCellDef> phone </th>
+			<td mat-cell *matCellDef="let users"> {{users.phone}} </td>
+		</ng-container>
+
+		<ng-container matColumnDef="gender">
+			<th mat-header-cell *matHeaderCellDef> Gender </th>
+			<td mat-cell *matCellDef="let users"> {{users.gender}} </td>
+		</ng-container>
+
+				<ng-container matColumnDef="City">
+			<th mat-header-cell *matHeaderCellDef> City </th>
+			<td mat-cell *matCellDef="let users"> {{users.city}} </td>
+		</ng-container>
+
+				<ng-container matColumnDef="Country">
+			<th mat-header-cell *matHeaderCellDef> Country </th>
+			<td mat-cell *matCellDef="let users"> {{users.country}} </td>
+		</ng-container>
+
+				<ng-container matColumnDef="userType">
+			<th mat-header-cell *matHeaderCellDef> User Type </th>
+			<td mat-cell *matCellDef="let users"> {{users.userType}} </td>
+		</ng-container>
+
+			<tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+	</table>
+
+	<mat-paginator  [pageSize]="10" [pageSizeOptions]="[5, 10, 25,50,100]" showFirstLastButtons></mat-paginator>
+</div>
+
+<app-footer></app-footer>

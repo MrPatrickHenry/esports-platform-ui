@@ -1,0 +1,434 @@
+<div *ngIf="isMobile === true">
+    <img src='{{ users.path }}' class="profilePic">
+</div>
+<div class="container mat-elevation-z12">
+    <ng-container>
+        <div>
+            <mat-tab-group [selectedIndex]="1">
+
+                <mat-tab label="Personal Info." *ngIf="users">
+                    <ng-container *ngTemplateOutlet="personal_info"></ng-container>
+                </mat-tab>
+
+
+                <mat-tab label="Arcade Info." *ngIf='userAuth === "Arcade Owner"'>
+                    <ng-container *ngTemplateOutlet="arcade"></ng-container>
+                </mat-tab>
+
+                <mat-tab label="Business Info." *ngIf='AuthUser === "Developer"'>
+                    <ng-container *ngTemplateOutlet="developer"></ng-container>
+                </mat-tab>
+
+
+                <mat-tab label="Social Info." *ngIf="users">
+                    <ng-container *ngTemplateOutlet="SocialInfo"></ng-container>
+                </mat-tab>
+                <!-- <mat-tab label="Team" disabled *ngIf="users">
+                    <ng-container *ngTemplateOutlet="team"></ng-container>
+                </mat-tab> -->
+                <mat-tab label="Media" *ngIf="users">
+                    <ng-container *ngTemplateOutlet="Media"></ng-container>
+                </mat-tab>
+
+                <mat-tab label="Trophies" *ngIf='userAuth === "VALAdmin"'>
+                    <ng-container *ngTemplateOutlet="trophies"></ng-container>
+                </mat-tab>
+                <mat-tab label="Privacy & Security" *ngIf='users'>
+                    <ng-container *ngTemplateOutlet="settings"></ng-container>
+                </mat-tab>
+
+            </mat-tab-group>
+        </div>
+    </ng-container>
+    <!-- Personal Info -->
+    <ng-template #personal_info matTabContent>
+        <mat-card-header>
+        </mat-card-header>
+        <mat-card class="desktopPic" *ngIf="isMobile != true">
+            <img src='https://storage.googleapis.com/filestorage_valvr2020/{{ users.profilePic }}' class="profilePic mat-elevation-z8">
+        </mat-card>
+        <mat-list role="list">
+
+            <button mat-raised-button color="primary" (click)="editUser()">Edit</button>
+
+
+
+            <mat-list-item>
+
+
+
+                <span class="item-title">Full Name: </span><span>
+                    <p> {{ users.name }}
+                    </span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="item-title">Email:</span>
+                    <span> {{ users.email ? users.email : '-' }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="item-title">Phone:</span>
+                    <span> {{ users.phone }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="item-title">Date of Birth:</span>
+                    <span> {{ users.dob | date}}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="item-title">Gender:</span>
+                    <span> {{ users.gender | titlecase}}</span>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <span class="item-title">1st Line Address:</span>
+                    <span> {{ users.address1 }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="item-title">2nd Line Address:</span>
+                    <span> {{ users.address2}}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="item-title">City:</span>
+                    <span> {{ users.city }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="item-title">State:</span>
+                    <span> {{ users.state }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="item-title">Country:</span>
+                    <span> {{ users.country }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="item-title">Zip / Postal:</span>
+                    <span> {{ users.zip_postal }}</span>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+
+                <mat-list-item>
+                    <span class="item-title">Gamer Tag:</span>
+                    <span> {{ users.gamertag}}</span>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <span class="item-title">Primary Headset:</span>
+                    <span> {{ users.headset}}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="item-title">Home Arcade:</span>
+                    <span> {{ users.home_arcade}}</span>
+                </mat-list-item>
+                <mat-list-item *ngIf=(teamData)>
+                    <span class="item-title">Team:</span>
+                    <span>{{ teamData.team_Name}}</span>
+                </mat-list-item>
+                <mat-list-item class="inputFields">
+
+                </mat-list-item>
+
+            </mat-list>
+
+        </ng-template>
+
+        <!-- Arcade -->
+        <ng-template #arcade matTabContent>
+
+
+
+            <mat-card class="desktopPic" *ngIf="isMobile != true">
+                <img src='https://storage.googleapis.com/filestorage_valvr2020/{{arcadeData.logo}}' class="profilePic">
+            </mat-card>
+
+            <mat-list>
+                <mat-list-item>
+                    <span class="item-title">Arcade Name:</span>
+                    <span>{{ arcadeData.arcadeName }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="item-title">Email:</span>
+                    <span>{{ arcadeData.email }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="item-title">Phone:</span>
+                    <span>{{ arcadeData.phone }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="item-title">Open Hours:</span>
+                    <span> {{ arcadeData.hours }}</span>
+                </mat-list-item>
+                <mat-list-item>
+                    <span class="item-title">1st Line Address:</span>
+                    <span> {{ arcadeData.address1 }}</span>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <span class="item-title">2nd Line Address:</span>
+                    <span> {{ arcadeData.address2 }}</span>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <span class="item-title">City:</span>
+                    <span> {{ arcadeData.city }}</span>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <span class="item-title">State:</span>
+                    <span> {{ arcadeData.state }}</span>
+                </mat-list-item>
+
+                <mat-list-item>
+                    <span class="item-title">Country:</span>
+                    <span> {{ arcadeData.country }}</span>
+                </mat-list-item>
+
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <span class="item-title">Arcade's Discord:</span>
+                    <span> {{ arcadeData.discord }}</span>
+                </mat-list-item>
+            </mat-list>
+            <button mat-raised-button  color="primary" (click)="editArcadeInfo()">Edit</button>
+        </ng-template>
+
+        <!-- Team -->
+        <ng-template #team matTabContent>
+            <div *ngIf="!teamData; else notShow">
+                <button mat-raised-button color="primary" (click)="teamCreate()">Create team</button>
+            </div>
+            <ng-template #notShow>
+<!--                 <mat-card class="desktopPic" *ngIf="isMobile != true">
+<img src='https://storage.googleapis.com/filestorage_valvr2020/{{ teamData.team_Logo }}' class="profilePic">
+<mat-slide-toggle [(ngModel)]="teamData.recruting" (change)="teamRecruiting($event)">Recruiting</mat-slide-toggle>
+</mat-card>
+-->
+<mat-list role="list">
+    <mat-list-item>
+        <span class="item-title">Team Name: </span><span>
+            <p> {{ teamData.team_Name }}
+            </span>
+        </mat-list-item>
+        <mat-list-item>
+            <span class="item-title">Team Manager: </span>
+            <span>
+                <p> {{ teamData.team_Manager }}
+                </span>
+            </mat-list-item>
+<!--                             <mat-list-item>
+<span class="item-title">Home Arcade: </span><span>
+<p> {{ teamData.home_Arcade }}
+</span>
+</mat-list-item> -->
+<mat-divider></mat-divider>
+
+<mat-list-item *ngIf="teamData.website">
+    <span>
+        <i class="fas fa-external-link-square-alt fa-2x"></i>
+    {{ teamData.website }}</span>
+</mat-list-item>
+
+<mat-list-item *ngIf="teamData.twitter">
+    <span><i class="fab fa-twitter fa-2x"></i>
+    {{ teamData.twitter }}</span>
+</mat-list-item>
+
+<mat-list-item *ngIf="teamData.twitch">
+    <span><i class="fab fa-twitch fa-2x"></i>
+    {{ teamData.twitch }}</span>
+</mat-list-item> 
+
+<mat-list-item>
+    <span class="item-title">
+        <img src="https://img.icons8.com/material/24/000000/discord-logo--v1.png"> </span>
+    <span> {{ teamData.discord }}</span>
+</mat-list-item>
+
+<mat-list-item class="inputFields">
+    <button mat-raised-button color="primary" (click)="teamEdit()">Edit</button>
+</mat-list-item>
+</mat-list>
+</ng-template>
+</ng-template>
+
+
+<!-- Developer -->
+<ng-template #developer matTabContent>
+    <mat-card-header>
+        <img src="https://irp-cdn.multiscreensite.com/902d0135/dms3rep/multi/tablet/Virtualities_logo.png" class="profilePic">
+    </mat-card-header>
+    <mat-list>
+        <mat-list-item>
+            <span class="item-title">Business Name</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span class="item-title">Email</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span class="item-title">Phone</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span class="item-title">Open Hours</span>
+        </mat-list-item>
+        <mat-list-item>Map<span class="item-title>"> Address </span>
+        </mat-list-item>
+    </mat-list>
+    <button mat-raised-button color="primary">Edit</button>
+</ng-template>
+<!-- Social  -->
+<ng-template #SocialInfo matTabContent>
+    <mat-list>
+       <mat-list-item *ngIf="users.facebook">
+        <span><i class="fab fa-facebook fa-2x"></i>
+            <a href="https://facebook.com/{{ users.facebook }}">{{ users.facebook }}</a></span>
+        </mat-list-item>
+        <mat-list-item *ngIf="users.youtube">
+            <span><i class="fab fa-youtube fa-2x"></i>
+                <a href="https://youtube.com/{{ users.youtube }}">{{ users.youtube }}</a></span>
+            </mat-list-item>
+            <mat-list-item *ngIf="users.snapchat">
+                <span><i class="fab fa-snapchat fa-2x"></i>
+                    <a href="https://snapchat.com/{{ users.snapchat }}">{{ users.snapchat }}</a>
+                </span>
+            </mat-list-item>
+            <mat-list-item *ngIf="users.instagram">
+                <span>
+                    <i class="fab fa-instagram fa-2x"></i>
+                    <a href="https://instagram.com/{{ users.instagram }}">{{ users.instagram }}</a>
+                </span>
+            </mat-list-item>
+            <mat-list-item *ngIf="users.telegram">
+                <span><i class="fab fa-telegram fa-2x"></i>{{ users.telegram }}
+                </span>
+            </mat-list-item>
+            <mat-list-item *ngIf="users.twitter">
+                <span><i class="fab fa-twitter fa-2x"></i>
+                    <a href="https://twitter.com/{{ users.twitter }}">{{ users.twitter }}</a></span>
+                </mat-list-item>
+                <mat-list-item *ngIf="users.twitch">
+                    <span><i class="fab fa-twitch fa-2x"></i>
+                        <a href="https://twitch.com/{{ users.twitch }}">{{ users.twitch }}</a></span>
+                    </mat-list-item>
+                    <mat-list-item *ngIf="users.discord">
+                                <img src="https://img.icons8.com/material/24/000000/discord-logo--v1.png">&nbsp;{{ users.discord }}
+                    </mat-list-item>
+                    <mat-list-item class="inputFields">
+
+                        <button mat-raised-button color="primary" (click)="editSocialInfo()">Edit
+                        </button>     
+                    </mat-list-item>
+
+                </mat-list>
+
+            </ng-template>
+
+            <!-- media  move to a componenet-->
+            <ng-template #Media matTabContent>
+
+                <mat-card-content>
+                    <br>
+                    <mat-card class="p-2">
+                        <h3>Templates</h3>
+                        <p>No problem if you don't have Photoshop we also recommend <a href="https://www.photopea.com/?ref=VAL">Photopea</a> A free web browser photo editor</p>
+                        <p> 
+<a mat-raised-button color="primary" href="https://storage.googleapis.com/filestorage_valvr2020/media/VAL_PSD_Template.psd">
+<i class="far fa-file-image"></i> 
+Here is a PSD template you can use for your coverboard artwork
+</a>                        
+</p>
+<br>
+
+<a mat-raised-button color="primary" href="https://storage.googleapis.com/filestorage_valvr2020/media/VAL_PSD_Avatar_Template.psd">
+<i class="far fa-file-image"></i>
+ Here is a PSD template you can use for your avatar artwork
+</a>                        
+<br>
+
+                    </mat-card>
+                    <br>
+                    
+                    <div class="Mediacontainer">
+                        <!-- width of .grid-sizer used for columnWidth -->
+                        <mat-grid-list cols="3">
+
+                            <div class="cards " *ngFor="let images of media">
+                                <form>
+                                    <input type="hidden" value="{{ images.id }}" #fid>
+                                    <img class="image mediaContent" #id src="https://storage.googleapis.com/filestorage_valvr2020/{{ images.path }}" (click)="picture(fid.value)">
+                                    <div class="middle">
+                                        <div class="text" (click)="picture(fid.value)">Edit</div>
+                                    </div>
+                                </form>
+                            </div>
+                        </mat-grid-list>
+                    </div>
+                </mat-card-content>
+
+
+                <mat-card-actions>
+
+
+                    <mat-list-item class="inputFields">
+
+
+                        <button mat-raised-button color="primary" (click)="addMedia()">+</button>
+                    </mat-list-item>
+                </mat-card-actions>
+            </ng-template>
+
+            <ng-template #trophies matTabContent>
+                <mat-card-content>
+                    <div class="Mediacontainer">
+                        <mat-grid-list cols="3">
+                            <mat-card-title style="left:10%">Trophies</mat-card-title>
+                            <div class="cards">
+                                <a href="https://storage.googleapis.com/filestorage_valvr2020/MpqQAF_40599vqk2h7g4s5Assettrophygold.usdz
+                                " rel="ar" title="Iron Giant AR">View Your trophy</a>
+                            </div>
+                        </mat-grid-list>
+                    </div>
+                </mat-card-content>
+            </ng-template>
+
+
+            <!-- privacy settings -->
+            <ng-template #settings matTabContent>
+                <mat-card-content>
+                    <mat-list-item>
+                        <mat-card-title style="left:10%">Privacy</mat-card-title>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-slide-toggle [(ngModel)]="users.public" (change)="searchable($event)">Public/Searchable
+                        </mat-slide-toggle>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-slide-toggle >Share Personal Info with trusted 3rd Parties e.g Game Developers</mat-slide-toggle>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <p>In accordance with GDPR, if you wish to leave VAL, we will delete your PPI information and only keep a record of your score.<br>Within accordance of the GDPR law we are able to, for the purposes of our platform. e.g. running competitions
+                        and leaderboards.</p>
+                        <!--                                             <button mat-raised-button color="primary" (click)="gdprDelete()">Delete</button> -->
+                    </mat-list-item>
+                    <br><br>
+                    <mat-divider></mat-divider>
+                    
+                </mat-card-content>
+
+                <mat-card-content>
+                    <mat-list-item>
+                        <mat-card-title style="left:10%">Security</mat-card-title>
+                    </mat-list-item>
+                    <mat-list-item class="inputFields">
+                        <mat-form-field>
+                            <input type="password" placeholder="Change Password" #pass1 matInput required="true" minlength="6">
+                        </mat-form-field>
+                    </mat-list-item>
+                    <mat-list-item class="inputFields">
+                        <mat-form-field>
+                            <input type="password" placeholder="Confirm Password" #pass2 matInput required="true" minlength="6">
+                        </mat-form-field>   
+                    </mat-list-item>
+
+                    <mat-list-item class="inputFields">
+                      <button mat-raised-button color="primary" (click)="passwordChange(pass1.value,pass2.value)">Update Password</button>
+                  </mat-list-item>
+              </mat-card-content>
+          </ng-template>
+      </div>

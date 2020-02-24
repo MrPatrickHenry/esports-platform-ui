@@ -1,0 +1,140 @@
+<div *ngIf='usersPublic === "private" else profile' >
+<mat-card class="p2">
+<h3 style="text-align: center;">This account is private</h3>
+</mat-card>
+</div>
+
+<ng-template #profile>
+<div class="user-profile relative" *ngIf="users">
+<div class="profile-cover">
+   <img src="https://storage.googleapis.com/filestorage_valvr2020/{{users.coverboard}}" width="100%">
+</div>
+<div class="">
+<div fxLayout="row wrap" class="profile-w">
+<div fxFlex.gt-sm="25" fxFlex.gt-xs="25" fxFlex="20">
+</div>
+<div fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="80" class="user-links">
+<ul class="profile-menu">
+<!--           <li><a href="">Fans<span class="block text-lg-center">217</span></a></li>
+<li><a href="">Tournaments<span class="block text-lg-center">89</span></a></li>
+<li><a href="">Wins<span class="block text-lg-center">78,6790</span></a></li> -->
+</ul>
+</div>
+<div fxFlex.gt-sm="25" fxFlex.gt-xs="25" fxFlex="100" class="align-self-center">
+
+</div>
+</div>
+
+<div fxLayout="row wrap">
+<div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100" class="relative">
+<div class="profile-avatar" width="200" height="200">
+<img src="https://storage.googleapis.com/filestorage_valvr2020/{{users.profilePic}}" width="200" height="200">
+</div>
+<div class="profile-info" *ngIf="users">
+<h3 class="profile-name"><strong>@{{users.gamertag}}</strong></h3>
+<span class="user-name">{{users.name}}</span>
+<span class="pro-des" *ngIf="users.home_arcade">
+<i class="fa fa-home" aria-hidden="true"></i>
+{{users.home_arcade}}
+</span>
+<span><i class="fa fa-map-marker"></i> {{users.state}},{{users.country}}</span>
+<span><i class="fa fa-calendar"></i><strong>Joined: </strong>{{users.created_at | date}}</span>
+<span><i class="fa fa-birthday-cake"></i><strong>Last Seen: </strong>{{users.updated_at | date}}</span>
+<mat-divider></mat-divider>
+<span *ngIf="users.youtube"><i class="fab fa-youtube"></i>
+   <a  href="https://youtube.com/c/{{users.youtube}}">{{users.youtube}}</a></span>
+<span *ngIf="users.snapchat"><i class="fab fa-snapchat"></i>
+   <a  href="https://snapchat.com/{{users.snapchat}}">{{users.snapchat}}</a></span>
+<span *ngIf="users.instagram"><i class="fab fa-instagram"></i>
+   <a  href="https://instagram.com/{{users.instagram}}">{{users.instagram}}</a></span>
+
+<span *ngIf="users.facebook"><i class="fab fa-facebook"></i>
+   <a  href="https://facebook.com/{{users.facebook}}">{{users.facebook}}</a></span>
+
+
+<span *ngIf="users.telegram"><i class="fab fa-telegram"></i>{{users.telegram}}</span>
+
+<span *ngIf="users.twitter"><i class="fab fa-twitter"></i>
+   <a  href="https://twitter.com/{{users.twitter}}">{{users.twitter}}</a></span>
+
+<span *ngIf="users.twitch"><i class="fab fa-twitch"></i>
+   <a  href="https://twitch.com/{{users.twitch}}">{{users.twitch}}</a></span>
+<span *ngIf="users.discord"><strong>Discord:</strong> {{users.discord}}</span>
+
+<mat-divider></mat-divider>
+<span *ngIf="users.favourite_VR_Title"><i class="fa fa-gamepad"></i>
+   {{users.favourite_VR_Title}}</span> 
+
+
+
+</div>
+</div>
+<div fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100" class="mt-1">
+<div class="profile-content">
+<div class="profile-head">
+   <h4>Score History</h4>
+   <hr>
+</div>
+<div class="profile-cont">
+   <ul class="pl-0">
+      <li>
+         <div fxLayout="row">
+
+            <div class="pl-1 pr-1 profile-i" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="72" fxFlex.lg="100" fxFlex.xl="100">
+
+
+<!-- SCORES -->
+
+<table mat-table matSort [dataSource]="dataSource">
+
+ <ng-container matColumnDef="gameTitle">
+         <th mat-header-cell *matHeaderCellDef mat-sort-header> Game Title </th>
+         <td mat-cell *matCellDef="let scores">
+                 <span class="adminChoice">{{scores.gameTitle}}</span>
+                  </td>
+ </ng-container>
+
+ <ng-container matColumnDef="arcadeName">
+         <th mat-header-cell *matHeaderCellDef> Arcade Name </th>
+         <td mat-cell *matCellDef="let scores"> {{scores.arcadeName}} </td>
+ </ng-container>
+
+
+                 <ng-container matColumnDef="score">
+         <th mat-header-cell *matHeaderCellDef> Score </th>
+         <td mat-cell *matCellDef="let scores"> {{scores.score}} </td>
+ </ng-container>
+
+
+                 <ng-container matColumnDef="submitted">
+         <th mat-header-cell *matHeaderCellDef> Submitted </th>
+         <td mat-cell *matCellDef="let scores"> {{scores.submitted |  date}} </td>
+ </ng-container>
+
+         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+ <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<!-- <mat-paginator  [pageSize]="10" [pageSizeOptions]="[5, 10, 25,50,100]" showFirstLastButtons></mat-paginator>
+ -->
+<!-- SCORES END -->
+
+
+
+
+
+
+
+            </div>
+         </div>
+      </li>
+   </ul>
+</div>
+</div>
+</div>
+<div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100" class="align-self-center">
+</div>
+</div>
+</div>
+</div>
+</ng-template>

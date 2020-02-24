@@ -1,0 +1,136 @@
+#map{
+  width: 100%;
+  max-width: 100%;
+  height: 500px;
+  float:left;
+}
+
+
+td.mat-cell{
+  padding-top:1%;
+}
+
+.hero {position:relative; text-align: center; overflow: hidden; color: #fcfcfc;margin-top:5%;}
+.hero h1 {font-weight: normal;font-size: 5.4em;margin:0 0 20px; text-transform: uppercase;letter-spacing:-1px;}
+.hero p {font-family: 'Abel', sans-serif;text-transform: uppercase; color: #5CCA87; letter-spacing: 6px;font-size: 1.2em;}
+.hero-wrap {padding: 1%;margin-top:7%;}
+
+
+.mainHeading{
+    font-weight:900;
+            font-family: "Futura", futura-pt,"Trebuchet MS", Helvetica, sans-serif;
+color: #000;
+font-size:72px;
+text-transform: uppercase;
+  text-align:center;
+}
+
+th.mat-header-cell{
+        padding-top:1%;
+}
+
+.arcadeTable{
+width: 100% !important;
+}
+
+#content{
+  color:#0d0d0d !important;
+}
+th{
+  font-weight: 700;
+  color:#000;
+}
+.mat-table{
+  width:100%;
+}
+.map{
+  height:100%;
+}
+.container {
+  width: 1110px;
+  height: auto;
+  padding: 20px;
+  background-color:#303030;
+  display:flex;
+  padding-top:10px;
+  margin:0 auto;
+  grid-template-rows: auto 1fr auto;
+  align-content: space-between;
+  z-index:3;
+          box-shadow: 0 2px 1px -1px rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 1px 3px 0 rgba(0,0,0,.12);
+
+
+  a{
+    color:#FFF;
+    text-decoration: none;
+  }
+  ::ng-deep {
+    .header {
+      display: flex;
+      justify-content: center;
+      margin: 0 0 20px;
+    }
+
+    mat-card {
+      width: 95%;
+      border-radius:0px;
+      background: #424242;
+      align-self: top;
+      justify-self: center;
+      color:#0d0d0d;
+      margin:0 auto;
+      z-index:5;
+      box-shadow: 0 2px 1px -1px rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 1px 3px 0 rgba(0,0,0,.12);
+      .content {
+        width: 90%;
+        margin: 0 auto;
+        button {
+          margin-top: 15px;
+          border-radius:0px;
+        }
+      }
+      .auth-card{
+        padding:20px;
+        border-radius:0px;
+
+      }
+
+
+      mat-card-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+        margin-left:0px;
+        .links {
+          & > :last-of-type {
+            margin-left: 15px;
+          }
+        }
+      }
+    }
+
+    form {
+      display: grid;
+      width: 100%;
+    }
+    .bottom-links {
+      display: flex;
+      padding: 0 24px;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0;
+      .links {
+        & > :last-of-type {
+          margin-left: 15px;
+        }
+      }
+    }
+
+    .link-sign-up, .link-sign-in {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: 500;
+    }
+  }
+}

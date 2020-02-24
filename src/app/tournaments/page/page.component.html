@@ -1,0 +1,196 @@
+<app-signup-modal *ngIf="usertype != 'Player','Arcade Owner'" ></app-signup-modal>
+
+<div *ngIf='active === "0" else tournamentView' >
+<mat-card class="p2">
+<h3 style="text-align: center;">We couldnt find the tournament you were looking for. </h3>
+</mat-card>
+</div>
+
+<ng-template #tournamentView >
+<div *ngIf="tournament">
+<div class="leaderboardCover">
+<img src="https://storage.googleapis.com/filestorage_valvr2020/{{tournament.bannerArt}}" alt="{{tournament.name}}" class="leaderboardCover">
+</div>
+
+<div fxLayout="row wrap">
+<!-- Disabled until artwork is approved -->
+<!--      <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100" class="relative">
+<div class="advert-info">
+</div>
+<div class="advertContainer">
+<img src="https://cdn.freelogovectors.net/wp-content/uploads/2018/05/oculus-logo.png" alt="Oculus Logo" class="ad center" (load)="tracking('62',1,0)" (click)="tracking('62',0,1)">
+</div> 
+</div>-->
+<div class="container">
+<div *ngIf="attending == false">
+<mat-card class="p-2 card-wheather grad-blue" *ngIf="usertype === 'Player','Arcade Owner'">
+<input type="hidden" #id value="{{tournament.id}}">
+<button mat-raised-button color="accent" (click)="join(id.value)" *ngIf='usertype === "Arcade Owner" || usertype === "Player"'>
+<span> Click here to </span>  <span *ngIf='usertype === "Player"'>Join</span>
+<span *ngIf='usertype === "Arcade Owner" && tournament.group === "lbe"'> Request to Host</span>
+</button> <h2 class=h2Val>{{tournament.name}}</h2>
+
+</mat-card>
+</div>
+<mat-card class="p-2">
+
+<div fxFlex.gt-sm="60" fxFlex.gt-xs="60" fxFlex.gt-md="100" fxFlex.gt-lg="100"  class="mt-1">
+
+<mat-tab-group>
+
+
+<mat-tab label="About">
+<ng-container *ngTemplateOutlet="about"></ng-container>
+</mat-tab>
+
+
+<mat-tab label="Rules" >
+<ng-container *ngTemplateOutlet="rules"></ng-container>
+</mat-tab>
+
+<mat-tab label="Prizes" >
+<ng-container *ngTemplateOutlet="prizes"></ng-container>
+</mat-tab>
+
+<mat-tab label="Scores">
+<ng-container *ngTemplateOutlet="scores" ></ng-container>
+</mat-tab>
+
+<mat-tab label="Media Kit" *ngIf="usertype === 'Arcade Owner'">
+<ng-container *ngTemplateOutlet="mediaKit" ></ng-container>
+</mat-tab>
+
+
+
+<mat-tab label="Host Info"  *ngIf="usertype === 'Arcade Owner'">
+<ng-container *ngTemplateOutlet="hostInfo"></ng-container>
+</mat-tab>
+
+<mat-tab label="Host Locations"  *ngIf="tournament.group === 'lbe'">
+<ng-container *ngTemplateOutlet="homemap"></ng-container>
+</mat-tab>
+
+<mat-tab label="Home Players"  *ngIf="tournament.group === 'home'">
+<ng-container *ngTemplateOutlet="map"></ng-container>
+</mat-tab>
+
+</mat-tab-group>
+
+
+<ng-template #about matTabContent >
+
+<strong>Start Date: </strong>{{tournament.startDate | date}}<br>
+<strong>End Date:</strong> {{tournament.endDate | date }}<br>
+<br><br>
+
+<hr>
+
+<p class="text" [innerHTML]=tournament.descriptionTournament><strong>Description:</strong><br></p>
+
+<!-- <div *ngIf="tournament.endDate < todayDate">-->
+
+
+</ng-template>
+
+
+
+
+<ng-template #rules matTabContent >
+<p class="text" [innerHTML]=tournament.rules></p>
+</ng-template>
+
+
+<ng-template #scores matTabContent>
+
+<div *ngIf='usertype === "Arcade Owner"' >
+<input type="hidden" #id value="{{tournament.id}}">
+
+<button disabled mat-raised-button color="accent" class="actionButtons" (click)="addscore(id.value)" matTooltip="Submit Score">
+<i class="material-icons">score</i> Submit Score
+</button>
+</div>
+<p class="text">2020 Season 1 Scores Coming Soon</p>
+</ng-template>
+
+
+<ng-template #prizes matTabContent >
+<p class="text" [innerHTML]=tournament.rewards></p>
+</ng-template>
+
+
+<ng-template #mediaKit matTabContent >
+For Arcades all you need to know
+<a href={{tournament.mediaKit}}  onClick="ga(send',event',PDF Downloads',Click', Media Kit');" class="accent">Download Media Kit </a>
+</ng-template>
+
+
+<ng-template #hostInfo matTabContent>
+<mat-list>
+<mat-list-item>
+<span> The level is  &nbsp; </span><br><br> <span [innerHTML]=tournament.room></span>
+</mat-list-item>
+<mat-list-item>
+<span>The password is  &nbsp;</span><br>{{tournament.password}}
+</mat-list-item>
+<mat-list-item>
+<span>  The key is &nbsp; </span> <br>{{tournament.key}}
+</mat-list-item>
+</mat-list>
+</ng-template>
+
+<!-- //map for contenders -->
+<ng-template #map matTabContent>
+<div id="map"></div>
+<mat-divider></mat-divider>
+<div *ngIf="playersAttending">
+<ul>
+<li *ngFor="let player of playersAttending">
+{{player.name}}
+</li>
+</ul>
+</div>
+</ng-template>
+
+<ng-template #homemap matTabContent>
+<div id="map"></div>
+<mat-divider></mat-divider>
+<table mat-table matSort [dataSource]="dataSource">
+
+<ng-container matColumnDef="name">
+<th mat-header-cell *matHeaderCellDef> Name </th>
+<td mat-cell *matCellDef="let users"> 
+
+    <a class="mat-ripple accent"  mat-ripple="" color="primary" [routerLink]="['/player/profile/',users.name]"> {{users.name}}</a>
+</td>
+</ng-container>
+
+<ng-container matColumnDef="city">
+<th mat-header-cell *matHeaderCellDef> City </th>
+<td mat-cell *matCellDef="let users"> {{users.city}} </td>
+</ng-container>
+
+<ng-container matColumnDef="country">
+<th mat-header-cell *matHeaderCellDef> Country </th>
+<td mat-cell *matCellDef="let users"> {{users.country}} </td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator  [pageSize]="10" [pageSizeOptions]="[5, 10, 25,50,100]" showFirstLastButtons></mat-paginator>
+</ng-template>
+</div>
+</mat-card>
+</div>
+</div>
+<!-- Disabled until artwork is approved -->
+<!-- <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100" class="relative">
+<div class="advert-info"></div>
+<div class="advertContainer" style="width:30% !important; height:16% !important; ">
+<h5 class="accent"> Sponsored by</h5>
+<img src="https://cdn.freelogovectors.net/wp-content/uploads/2018/05/oculus-logo.png" alt="Oculus Logo" class="ad center" (load)="tracking('62',1,0)" (click)="tracking('62',0,1)">
+</div>
+</div> -->
+</div>
+</ng-template>

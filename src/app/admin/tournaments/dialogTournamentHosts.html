@@ -1,0 +1,60 @@
+<h1>Attendees: 
+{{attendType}}</h1>
+<div class="content">
+  <table mat-table matSort [dataSource]="dataSource">
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let peoples"> {{peoples.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let peoples"> {{peoples.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="City">
+      <th mat-header-cell *matHeaderCellDef> City </th>
+      <td mat-cell *matCellDef="let peoples"> {{peoples.City}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Country">
+      <th mat-header-cell *matHeaderCellDef> Country </th>
+      <td mat-cell *matCellDef="let peoples"> {{peoples.Country}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="gamerTag">
+      <th mat-header-cell *matHeaderCellDef> Gamer Tag </th>
+      <td mat-cell *matCellDef="let peoples"> {{peoples.gamerTag }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="home_arcade">
+      <th mat-header-cell *matHeaderCellDef> HomeArcade </th>
+      <td mat-cell *matCellDef="let peoples"> {{peoples.home_arcade }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status" >
+      <th mat-header-cell *matHeaderCellDef> Invite Status </th>
+      <td mat-cell *matCellDef="let peoples" >
+            
+            <input type="hidden" value="{{peoples.aid}}" #aid mat-input>
+           <mat-slide-toggle [(ngModel)]="peoples.status" (change)="onChange(aid.value,$event)"></mat-slide-toggle>
+
+        <!--      <input type="hidden" value="{{peoples.aid}}" #aid mat-input>
+
+<mat-slide-toggle (change)="onChange($event,aid.value)">Auto-Renew</mat-slide-toggle> 
+       
+<mat-list-item>
+
+<input type="text" value="{{peoples.aid}}" #taskid >
+<mat-slide-toggle [(ngModel)]="peoples.status" (change)="approveAttendiee($event)">
+</mat-slide-toggle>
+        </mat-list-item> -->
+
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+  </div>

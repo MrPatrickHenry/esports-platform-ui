@@ -1,0 +1,286 @@
+<div class="wrapper">
+
+<div  *ngIf="analyticalSummary">
+
+<div fxLayout="row wrap">
+   
+<div fxFlex.sm="100" fxFlex.xs="100" fxFlex.md="33.33" fxFlex.lg="33.33" fxFlex.xl="33.33" fxFlex="100" class="m-gap p-gap">
+  <mat-card>
+     <div class="card-wheather grad-blue">
+        <div class="city"><a [routerLink]="['/admin/teams']">Total Teams</a></div>
+            <div class="weather">
+           <div class="sun d-flex justify-content-between">
+              <i class="fa fa-users fa-3x align-self-center"></i>
+              <div class="temp align-self-center">{{analyticalSummary.Team}}</div>
+           </div>
+        </div>
+     </div>
+  </mat-card>
+</div>
+
+<div fxFlex.sm="100" fxFlex.xs="100" fxFlex.md="33.33" fxFlex.lg="33.33" fxFlex.xl="33.33" fxFlex="100" class="m-gap p-gap">
+  <mat-card>
+     <div class="card-wheather grad-blue">
+        <div class="city"><a [routerLink]="['/admin/users']">Total Users</a></div>
+<!--    add when need that granuality
+<div class="date">This Week</div>
+-->            <div class="weather">
+           <div class="sun d-flex justify-content-between">
+            <i class="fas fa-user fa-3x align-self-center"></i>
+              <div class="temp align-self-center">{{analyticalSummary.Users}}</div>
+           </div>
+        </div>
+     </div>
+  </mat-card>
+</div>
+
+
+
+<div fxFlex.sm="100" fxFlex.xs="100" fxFlex.md="33.33" fxFlex.lg="33.33" fxFlex.xl="33.33" fxFlex="100" class="m-gap p-gap">
+  <mat-card>
+     <div class="card-wheather grad-blue">
+        <div class="city"><a [routerLink]="['/admin/arcades']">Total Arcades</a></div>
+<!--    add when need that granuality
+<div class="date">This Week</div>
+-->            <div class="weather">
+           <div class="sun d-flex justify-content-between">
+              <i class="fa fa-building fa-3x align-self-center"></i>
+              <div class="temp align-self-center">{{analyticalSummary.Arcades}}</div>
+           </div>
+        </div>
+     </div>
+  </mat-card>
+</div>
+
+
+<!--    <div fxFlex.sm="100" fxFlex.xs="100" fxFlex.md="33.33" fxFlex.lg="33.33" fxFlex.xl="33.33" fxFlex="100" class="m-gap p-gap">
+      <mat-card>
+         <div class="card-wheather grad-green">
+            <div class="city"><a [routerLink]="['/admin/arcades']">Total Arcades</a></div>
+          </div>
+               <div class="sun d-flex justify-content-between">
+                  <i class="fa fa fa-building fa-3x align-self-center"></i>
+                  <div class="temp align-self-center">{{analyticalSummary.Arcades}}</div>
+               </div>
+       
+      </mat-card>
+   </div>
+ -->
+
+<div fxFlex.sm="100" fxFlex.xs="100" fxFlex.md="33.33" fxFlex.lg="33.33" fxFlex.xl="33.33" fxFlex="100" class="m-gap p-gap">
+  <mat-card>
+     <div class="card-wheather grad-blue">
+        <div class="city"><a [routerLink]="['/admin/developers']">Total Developers</a></div>
+<!--    add when need that granuality
+<div class="date">This Week</div>
+-->            <div class="weather">
+           <div class="sun d-flex justify-content-between">
+            <i class="fas fa-laptop-code fa-3x align-self-center"></i>
+              <div class="temp align-self-center">{{analyticalSummary.Developers}}</div>
+           </div>
+        </div>
+     </div>
+  </mat-card>
+</div>
+
+<div fxFlex.sm="100" fxFlex.xs="100" fxFlex.md="33.33" fxFlex.lg="33.33" fxFlex.xl="33.33" fxFlex="100" class="m-gap p-gap">
+  <mat-card>
+     <div class="card-wheather grad-blue">
+        <div class="city"><a [routerLink]="['/admin/users']">Total Titles</a></div>
+<!--    add when need that granuality
+<div class="date">This Week</div>
+-->            <div class="weather">
+           <div class="sun d-flex justify-content-between">
+              <i class="fa fa-gamepad fa-3x align-self-center"></i>
+              <div class="temp align-self-center">{{analyticalSummary.Titles}}</div>
+           </div>
+        </div>
+     </div>
+  </mat-card>
+</div>
+
+<div fxFlex.sm="100" fxFlex.xs="100" fxFlex.md="33.33" fxFlex.lg="33.33" fxFlex.xl="33.33" fxFlex="100" class="m-gap p-gap">
+  <mat-card>
+     <div class="card-wheather grad-blue">
+        <div class="city"><a [routerLink]="['/admin/tournaments']">Total Tournaments</a></div>
+          <div class="weather">
+           <div class="sun d-flex justify-content-between">
+              <i class="fa fa-flag-checkered fa-3x align-self-center"></i>
+              <div class="temp align-self-center">{{analyticalSummary.Tournaments}}</div>
+           </div>
+        </div>
+     </div>
+  </mat-card>
+</div>
+
+<!-- tracking results -->
+<div fxFlex.sm="100" fxFlex.xs="100" fxFlex.md="33.33" fxFlex.lg="33.33" fxFlex.xl="33.33" fxFlex="100" class="m-gap p-gap">
+  <mat-card>
+     <div class="card-wheather grad-green">
+        <div class="city">Total Impressions</div>
+          <div class="weather">
+           <div class="sun d-flex justify-content-between">
+            <i class="fas fa-eye fa-3x align-self-center"></i>
+              <div class="temp align-self-center">{{tracking.Total_Impressions}}</div>
+           </div>
+        </div>
+     </div>
+  </mat-card>
+</div>
+
+<div fxFlex.sm="100" fxFlex.xs="100" fxFlex.md="33.33" fxFlex.lg="33.33" fxFlex.xl="33.33" fxFlex="100" class="m-gap p-gap">
+  <mat-card>
+     <div class="card-wheather grad-green">
+        <div class="city">Total Clicks</div>
+         <div class="weather">
+           <div class="sun d-flex justify-content-between">
+            <i class="fas fa-mouse fa-3x align-self-center"></i>
+              <div class="temp align-self-center">{{tracking.Total_Clicks}}</div>
+           </div>
+        </div>
+     </div>
+  </mat-card>
+</div>
+
+
+<div fxFlex.sm="100" fxFlex.xs="100" fxFlex.md="33.33" fxFlex.lg="33.33" fxFlex.xl="33.33" fxFlex="100" class="m-gap p-gap">
+  <mat-card>
+     <div class="card-wheather grad-green">
+        <div class="city">Click Through Rate</div>
+<!--    add when need that granuality
+<div class="date">This Week</div>
+-->            <div class="weather">
+           <div class="sun d-flex justify-content-between">
+            <i class="fas fa-chart-pie fa-3x align-self-center"></i>
+              <div class="temp align-self-center">{{tracking.CTR}}%</div>
+           </div>
+        </div>
+     </div>
+  </mat-card>
+</div>
+
+
+
+
+
+
+
+
+<hr> 
+  <!--  <div fxFlex.gt-sm="33.33%" fxFlex="100" class="m-gap p-gap">
+      <mat-card>
+         <mat-card-title fxLayout="row" fxLayoutAlign="start center">
+            Genders &nbsp;
+            <span fxFlex></span>
+
+         </mat-card-title>
+         <hr>
+         <mat-card-content>
+
+
+
+          <mat-list>
+ <mat-list-item *ngFor="let demographic of GenderAnalyitics"> 
+  <span><strong>{{demographic.gender | titlecase}}:</strong></span> {{demographic.total}}
+ </mat-list-item>
+
+</mat-list>
+          
+         </mat-card-content>
+      </mat-card>
+   </div>
+
+   <div fxFlex.gt-sm="33.33%" fxFlex="100" class="m-gap p-gap">
+      <mat-card>
+         <mat-card-title fxLayout="row" fxLayoutAlign="start center">
+            Countrys &nbsp;
+            <span fxFlex></span>
+
+         </mat-card-title>
+
+         <hr>
+         <mat-card-content>
+              <mat-list>
+ <mat-list-item *ngFor="let countryDemo of countrysData"> 
+  <span><strong>{{countryDemo.country }}:</strong></span> {{countryDemo.total}}
+ </mat-list-item>
+
+</mat-list>
+          
+         </mat-card-content>
+      </mat-card>
+   </div>
+
+   <div fxFlex.gt-sm="33.33%" fxFlex="100" class="m-gap p-gap">
+      <mat-card>
+         <mat-card-title fxLayout="row" fxLayoutAlign="start center">
+            Top Players &nbsp;
+            <span fxFlex></span>
+
+         </mat-card-title>
+         <hr>
+         <mat-card-content>
+<table mat-table matSort [dataSource]="dataSource">
+
+                <ng-container matColumnDef="gamertag">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Gamer Tag </th>
+                   <td mat-cell *matCellDef="let users; let i = index">
+       <span style="font-weight:700">{{i +1}}</span> <a [routerLink]="['/player/profile/',users.gamertag]">
+          <span class="adminChoice accent">  {{users.gamertag}}</span></a>
+</td>
+                </ng-container>
+
+                <ng-container matColumnDef="High_Score">
+                        <th mat-header-cell *matHeaderCellDef> High Score </th>
+                        <td mat-cell *matCellDef="let users"> {{users.High_Score}} </td>
+                </ng-container>
+
+                         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr> 
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+         </mat-card-content>
+      </mat-card>
+   </div> -->
+
+
+
+
+   <div fxFlex.sm="100" fxFlex.xs="100" fxFlex.md="66.66" fxFlex.lg="66.66" fxFlex.xl="66.66" fxFlex="100" class="m-gap p-gap">
+      <div class='profile' ontouchstart>
+         <aside class='avatar'><img src="https://storage.googleapis.com/filestorage_valvr2020/{{hotPlayer.profilePic}}" style="width:100%;height:336px"/></aside>
+         <section class='info'>
+            <h1 class="mb-1 mr-1 ml-1">{{hotPlayer.gamertag}}</h1>
+            <h2 class="mb-1 mr-1 ml-1">{{hotPlayer.home_arcade}}</h2>
+            <ul class="prof-list">
+               <li>
+                  <a class='link' target='_blank'>
+                  <i class="fab fa-facebook"></i>
+                  </a>
+               </li>
+               <li>
+                  <a class='link'  target='_blank'>
+                  <i class="fab fa-twitch"></i>
+                  </a>
+               </li>
+               <li>
+                  <a class='link'  target='_blank'>
+                  <i class="fab fa-twitter"></i>
+                  </a>
+               </li>
+            </ul>
+         </section>
+      </div>
+   </div>
+   <div fxFlex.sm="100" fxFlex.xs="100" fxFlex.md="66.66" fxFlex.lg="66.66" fxFlex.xl="66.66" fxFlex="100" class="m-gap p-gap">
+</div>
+
+
+  <div fxFlex.sm="100" fxFlex.xs="100" fxFlex.md="66.66" fxFlex.lg="66.66" fxFlex.xl="66.66" fxFlex="100" class="m-gap p-gap">
+</div>
+   <!-- closing of row wrap -->
+ </div>
+
+
+</div>
+
+</div>

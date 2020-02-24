@@ -1,0 +1,43 @@
+<div class="relative">
+  <div class="form-bg">
+    <div fxLayout="row" fxLayoutAlign="center start" class="pt-2">
+      <div fxLayout="column" fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="35" fxFlex.sm="80" fxFlex.xs="90">
+        <mat-card class="login-session">
+          
+            <img class="logoLogin" src="https://storage.googleapis.com/val-log/logo.png" alt="VAL Logo">
+            <p style="text-align: center; font-weight:700">Beta</p>
+
+<form>
+        <mat-form-field>
+          <label> You must be over 13 to use the VAL platform</label><br>
+                <input type="Date" #dob required matInput required (change)="ageCheck(dob.value)">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Full Name" type="text" name="name" #name required>
+        </mat-form-field>
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Email" type="email" name="email" required #email>
+          </mat-form-field>
+          <mat-form-field>
+
+            <mat-select placeholder="I am a..." #userType required>
+              <mat-option *ngFor="let types of Type" [value]="types.value" >
+                {{types.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Gamer Tag" type="text" name="gamertag" required="true" #gamerTag>
+          </mat-form-field>
+<p>By signing up you agree you are over the age of 13 and agree to our TOS</p>
+    <button mat-raised-button type="submit" [disabled]="usersAge <= 12" color="primary" (click)="signup(name.value,email.value,userType.value,gamerTag.value)">Sign Up</button>
+  </form>
+    <div class="link-sign-in">
+      <p>I already have an account: <a class="accent" [routerLink]="['/signin']">Sign in</a></p>
+    </div>        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

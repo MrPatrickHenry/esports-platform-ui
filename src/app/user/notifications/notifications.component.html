@@ -1,0 +1,67 @@
+<div class="container mat-elevation-z12">
+	<ng-container>
+		<div>
+			<mat-tab-group [selectedIndex]="1">
+
+				<mat-tab label="Unread">
+					<ng-container *ngTemplateOutlet="unread"></ng-container>
+				</mat-tab>
+
+
+				<mat-tab label="Read">
+					<ng-container *ngTemplateOutlet="read"></ng-container>
+				</mat-tab>
+
+			</mat-tab-group>
+		</div>
+	</ng-container>
+
+
+	<!-- UnRead messages  -->
+
+	<ng-template #unread matTabContent>
+		<mat-card *ngFor="let unreadNotification of unreadNotifications" class="notificationCards">
+			<mat-card-header> 
+				<h4>{{unreadNotification.data}}</h4> <span class="date">{{unreadNotification.created_at | date}}</span>
+			</mat-card-header>
+			<mat-card-content>
+
+				<span>you have been approved for </span>
+			</mat-card-content>
+			<mat-card-footer>
+				<mat-card-actions>
+				<button class="mediaButton" mat-raised-button color="primary" aria-label="Team Logo Set">
+				Mark as Read
+				</button>
+				</mat-card-actions>
+			</mat-card-footer>
+		</mat-card>
+		<mat-divider></mat-divider>
+
+	</ng-template>
+
+	<ng-template #read matTabContent>
+		<mat-card *ngFor="let readNotification of readNotifications" class="notificationCards">
+			<mat-card-header> 
+				<h4>{{readNotification.data}}</h4> <span class="date">{{readNotification.created_at | date}}</span>
+			</mat-card-header>
+			<mat-card-content>
+
+				<span>you have been approved for </span>
+			</mat-card-content>
+			<mat-card-footer>
+				<mat-card-actions>
+					<input type="hidden" value="{{readNotification.id}}" #idRead >
+					<button class="mediaButton" mat-raised-button color="primary" aria-label="Team Logo Set" (click)="deleteNotification(idRead.value)">
+					Delete
+				</button>
+				</mat-card-actions>
+			</mat-card-footer>
+		</mat-card>
+		<mat-divider></mat-divider>
+
+	</ng-template>
+
+
+
+</div>

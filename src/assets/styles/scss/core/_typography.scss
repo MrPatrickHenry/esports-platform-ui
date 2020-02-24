@@ -1,0 +1,49 @@
+
+/*---------------
+1.2 Typography
+---------------*/
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: $headings-margin-bottom;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+  color: #403c3c !important;
+  font-family:"Futura", futura-pt,"Trebuchet MS", Helvetica, sans-serif;
+}
+
+h1, .h1 { font-size: 4em !important; }
+h2, .h2 { font-size: 3em; }
+h3, .h3 { font-size: 1.75rem !important; line-height:2rem !important;margin-bottom:1rem !important;text-transform: uppercase;font-weight:700;}
+h4, .h4 { font-size: $font-size-h4; }
+h5, .h5 { font-size: $font-size-h5; }
+h6, .h6 { font-size: $font-size-h6; }
+
+a {
+  text-decoration: none;
+  color: inherit;
+  @include hover-focus {
+    cursor: pointer;
+    text-decoration: none;
+    outline: 0;
+  }
+}
+
+button {
+  outline: 0;
+}
+
+figure {
+  margin: 0;
+}
+
+hr {
+  margin-top: 0;
+  margin-bottom: 0;
+  border: 0;
+  border-top: 1px solid mat-color($foreground, divider);
+}
+
+strong, b {
+	font-weight: 700;
+}

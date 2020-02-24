@@ -1,0 +1,28 @@
+<div class="relative">
+<div class="form-bg">
+<div fxLayout="row" fxLayoutAlign="center start" class="pt-2">
+<div fxLayout="column" fxFlex.xl="25" fxFlex.lg="25" fxFlex.md="35" fxFlex.sm="80" fxFlex.xs="90">
+<mat-card class="login-session">
+<div>
+
+<img class="logoLogin" src="https://storage.googleapis.com/val-log/logo.png" alt="VAL Logo">
+<p style="text-align: center; font-weight:700">Beta</p>
+<div fxLayout="column" fxLayoutAlign="start stretch">
+    <mat-form-field style="width: 100%">
+    	<input matInput placeholder="E-Mail" type="text" name="email" required #email>
+    </mat-form-field>
+    <mat-form-field style="width: 100%" class="mb-1">
+    	<input matInput placeholder="Password" type="password" name="password" required #password>
+    </mat-form-field>
+    <button class="mat-primary radius-none loginButton" mat-raised-button (click)="auth(email.value, password.value)">SIGN IN</button>
+    <p class="mat-text-warn mb-0" style="margin-top:5%;">
+    	<a [routerLink]="['/forgot-password']">Forgot password?</a>
+    </p>
+    <p class="mb-0" style="margin-top:5%;">Don't have an account? <a [routerLink]="['/register']" class="mat-text-primary">Sign Up</a></p>
+</div>
+</div>
+</mat-card>
+</div>
+</div>
+</div>
+</div>

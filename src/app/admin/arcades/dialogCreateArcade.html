@@ -1,0 +1,117 @@
+<h1>Create an Arcade</h1>
+
+
+
+<form>
+	<mat-form-field>
+		<input type="text" matInput placeholder="Arcade Name" #name >
+	</mat-form-field>
+	<mat-form-field>
+
+		<input type="email" placeholder="Email" #email matInput >
+	</mat-form-field>
+	<mat-form-field>
+
+		<input type="tel" placeholder="Telephone NO:" #phone matInput >
+	</mat-form-field>  
+	<mat-form-field>
+		<input type="text" placeholder="1st Line of Address" #Address1 matInput>
+	</mat-form-field>
+
+	<mat-form-field>
+		<input type="text" placeholder="2nd Line of Address" #Address2 matInput>
+	</mat-form-field>
+
+	<mat-form-field>
+		<input type="text" placeholder="City" #city matInput>
+	</mat-form-field>
+
+		<mat-form-field>
+		<input type="text" placeholder="State" #state matInput>
+	</mat-form-field>
+
+		<mat-form-field>
+		<input type="text" placeholder="Country" #country matInput>
+	</mat-form-field>
+
+	<mat-form-field>
+
+		<input type="text" placeholder="Zip Code" #zipPost matInput >
+	</mat-form-field>
+
+	<mat-form-field>
+
+		<input type="text" placeholder="full website URL" #website matInput >
+	</mat-form-field>
+	<mat-form-field>
+
+		<input type="text" placeholder="Logo url" #logo matInput>
+	</mat-form-field> 
+
+	<mat-form-field>
+
+		<input type="text" placeholder="Description of Arcade" #desc matInput >
+	</mat-form-field>  
+
+
+	<mat-form-field>
+
+		<input type="textarea" placeholder="Notes Not public" #notes matInput >
+	</mat-form-field>  
+
+	<mat-form-field>
+
+		<input type="text" placeholder="Active" #active matInput>
+	</mat-form-field>
+	<mat-divider></mat-divider> 			
+	<mat-form-field>
+
+		<input type="text" #youtube placeholder="full YouTubue Channel URL" matInput >
+	</mat-form-field>
+
+	<mat-form-field>
+
+		<input type="text" #telegram matInput placeholder="Telegram" >
+	</mat-form-field>
+
+	<mat-form-field>
+
+		<input type="text" #snapchat matInput placeholder="Snapchat" >
+	</mat-form-field>
+
+	<mat-form-field>
+
+		<input type="text" #twitter matInput placeholder="twitter" >
+	</mat-form-field>
+
+
+	<mat-form-field>
+
+		<input type="text" #discord matInput placeholder="Discord">
+	</mat-form-field>
+	<!-- TODO bring in from server list-->
+	<p>		
+		<button mat-raised-button type="submit" color="secondary"  class="mat-raised-button mat-button-base mat-primary" 
+		(click)="createArcade(
+		name.value,
+		email.value,
+		phone.value,
+		zipPost.value,
+		Address1.value,
+		Address2.value,
+		city.value,
+		state.value,
+		country.value,
+		website.value,
+		logo.value,
+		desc.value,
+		notes.value,
+		active.value,
+		youtube.value,
+		telegram.value,
+		snapchat.value,
+		twitter.value,
+		discord.value)"> Update </button>
+
+	</form>
+

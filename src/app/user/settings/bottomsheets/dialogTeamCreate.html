@@ -1,0 +1,55 @@
+ <div class="content">
+ 	<h3>Update Your Team Info </h3>
+ 	<form>
+        	<mat-list>
+            <mat-list-item>
+ 		<mat-form-field>
+ 			<input type="text" placeholder="Team Name" #nameUpdate matInput value="{{ teamData.team_Name }}">
+ 		</mat-form-field>
+</mat-list-item>
+<mat-list-item>
+ 		<mat-form-field>
+ 			<input type="url" placeholder="Home Arcade" #home_ArcadeUpdate matInput value="{{ teamData.home_Arcade }}">
+ 		</mat-form-field>
+                </mat-list-item>
+<mat-list-item>
+ 		<mat-form-field>
+ 			<input type="text" placeholder="Twitter Handle" #twitterUpdate matInput value="{{ teamData.twitter }}">
+ 		</mat-form-field> 
+                </mat-list-item>
+<mat-list-item> 
+ 		<mat-form-field>
+ 			<input type="text" placeholder="Twitch Handle" #twitchUpdate matInput value="{{ teamData.twitch }}">
+ 		</mat-form-field>
+                </mat-list-item>
+<mat-list-item>
+ 		<mat-form-field>
+ 			<input type="text" placeholder="Website URL" #websiteUpdate matInput value="{{ teamData.website }}">
+ 		</mat-form-field>
+                </mat-list-item>
+<mat-list-item>
+
+ 		<mat-form-field>
+ 			<input type="text" placeholder="Discord Handle" #discordUpdate matInput value="{{ teamData.discord }}">
+ 		</mat-form-field>
+                </mat-list-item>
+<mat-list-item>
+
+ 		<mat-form-field>
+ 			<input type="text" placeholder="Instagram Handle" #instagramUpdate matInput value="{{ teamData.instagram }}">
+ 		</mat-form-field>
+                </mat-list-item>
+<mat-list-item>
+ 		<button mat-raised-button type="submit" color="primary" (click)="onTeamStore(
+ 		nameUpdate.value,
+ 		home_ArcadeUpdate.value,
+ 		twitterUpdate.value,
+ 		twitchUpdate.value,
+ 		websiteUpdate.value,
+ 		discordUpdate.value,
+ 		instagramUpdate.value)"> Save </button>
+                </mat-list-item>
+</mat-list>
+ 		<p>
+ 		</form>
+ 	</div>

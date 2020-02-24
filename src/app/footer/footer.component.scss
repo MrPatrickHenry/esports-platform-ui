@@ -1,0 +1,114 @@
+.mat-toolbar{
+bottom:0;
+position:fixed;
+z-index:1;
+margin-bottom: constant(safe-area-inset-bottom);
+margin-bottom: env(safe-area-inset-bottom);
+font-size:12px !important;
+color:black;
+}
+
+.mobileHealth{
+border-top:solid 1px green;
+background-color: #F2F4F8;
+color:black;
+}
+
+ul#menu li {
+display:inline;
+padding-left:0;
+color:#000;
+}
+
+.mat-list-item-content{
+color:#000;
+
+}
+
+.footer-button{
+color:purple;
+}
+.footer{
+width:100%;
+}
+
+.mat-icon-button{
+margin-right:10%;
+}
+
+.fab-container{
+bottom:0;
+position:fixed;
+}
+
+.copyright{
+float:right;
+}
+
+.mat-tab-group{
+margin-top:50px;
+}
+
+.mat-fab{
+bottom:10%;
+right:20px;
+position:fixed;
+}
+
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+}
+
+li {
+float: left;
+padding-left:10%;
+}
+
+li a {
+display: block;
+color: white;
+text-align: center;
+padding: 16px;
+text-decoration: none;
+bottom:15px;
+font-size: 12px;
+}
+
+.mat-toolbar-row{
+
+margin-bottom: constant(safe-area-inset-bottom); /* iOS 11.0 */
+margin-bottom: env(safe-area-inset-bottom); /* iOS 11.2 */
+z-index:10;
+}
+
+.example-fill-remaining-space {
+/* This fills the remaining space, by using flexbox. 
+Every toolbar row uses a flexbox row layout. */
+flex: 1 1 auto;
+text-align:center;
+}
+
+.logo{
+width:50px;
+margin-top:20%;
+margin-right:10%;
+}
+
+.info-block{
+font-size:10px;
+width: 80%;
+margin:0 auto;
+position:relative;
+display: -webkit-box;
+display: block;
+-webkit-box-pack: justify;
+justify-content: space-between;
+-webkit-box-align: center;
+align-items: center;
+-webkit-box-orient: horizontal;
+-webkit-box-direction: normal;
+flex-direction: row;
+}

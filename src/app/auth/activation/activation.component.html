@@ -1,0 +1,382 @@
+<div class="relative">
+<div class="form-bg">
+<div fxLayout="row" fxLayoutAlign="center start" class="pt-2">
+<div fxLayout="column" fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="35" fxFlex.sm="80" fxFlex.xs="90">
+<mat-card class="login-session">
+<div>
+
+<img class="logoLogin" src="https://storage.googleapis.com/val-log/logo.png" alt="VAL Logo">
+<p style="text-align: center; font-weight:700">Beta</p>
+
+
+<div class="content">
+<h1>Account Activation</h1>
+<div class="message" *ngIf='message === "Invalid"' >
+    <p>Sorry this token has expired or is incorrect</p>
+</div>
+</div>
+<!-- <div class="message" *ngIf='message === "valid"' >
+<p>Congratulations your account is activated...<br>
+    You will be redirected to the login page.<br>
+Good luck out there!</p>
+</div> -->
+
+<div *ngIf='userAuth === "Player" && message === "valid"'>
+<mat-horizontal-stepper  #stepper>
+<mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="secondFormGroup">
+    	<ng-template matStepLabel>Personal Details</ng-template>
+
+    	<mat-form-field>
+    		<input type="tel" placeholder="Telephone No:" required #phone matInput >
+    	</mat-form-field>  
+    	<mat-form-field>
+    		<input type="text" placeholder="1st Line of Address" required #Address1 matInput>
+    	</mat-form-field>
+    	<mat-form-field>
+    		<input type="text" placeholder="2nd Line of Address" required #Address2 matInput>
+    	</mat-form-field>
+    	<mat-form-field>
+    		<input type="text" placeholder="City" required #city matInput>
+    	</mat-form-field>
+    	<mat-form-field>
+    		<input type="text" placeholder="State" required #state matInput>
+    	</mat-form-field>
+    	<mat-form-field>
+    		<input type="text" placeholder="Country" required #country matInput>
+    	</mat-form-field>
+    	<mat-form-field>
+    		<input type="text" placeholder="Zip Code" #zipPost required matInput>
+    	</mat-form-field>
+     
+
+    	<mat-form-field>
+    		<span>DOB</span>
+    		<input type="Date" #dob  matInput required >
+    	</mat-form-field>
+    	<mat-form-field>
+    		<mat-select placeholder="Gender:" #gender required  matInput> 
+    			<mat-option value="Female">
+    				FEMALE
+    			</mat-option>
+    			<mat-option value="Male" >
+    				MALE
+    			</mat-option>
+    			<mat-option value="X">
+    				X
+    			</mat-option>
+    		</mat-select>
+    	</mat-form-field>
+
+
+    <mat-form-field>
+                <mat-select placeholder="Which Headset Provider you use:" #headset required  matInput> 
+                        <mat-option value="HTC Vive">
+                                HTC Vive
+                        </mat-option>
+                        <mat-option value="Oculus" >
+                                Oculus
+                        </mat-option>
+                        <mat-option value="PSVR">
+                                PSVR
+                        </mat-option>
+                         <mat-option value="Microsoft">
+                                Microsoft
+                        </mat-option>
+            
+                 <mat-option value="Other">
+                              Other
+                        </mat-option>
+                </mat-select>
+        </mat-form-field>
+    </form>
+    <div>
+    	<button mat-button matStepperNext>Next</button>
+    </div>
+
+
+</mat-step>
+<mat-step [stepControl]="secondFormGroup">
+    <ng-template matStepLabel>Gamer Details</ng-template>
+
+    <mat-form-field>
+    	<input type="text" placeholder="Favourite VR Title" #FavouriteVRTitle matInput>
+    </mat-form-field>
+    <mat-form-field>
+    	<input type="text" required placeholder="Home Arcade" #homeArcade matInput [formControl]="myControl" [matAutocomplete]="auto">
+    	<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+    		<mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+    			{{option}}
+    		</mat-option>
+    	</mat-autocomplete>
+    </mat-form-field>
+
+
+
+    <mat-form-field>
+    	<input type="text" placeholder="Team name if any" required #team matInput> 
+    </mat-form-field>  
+    <p> 
+
+<mat-form-field>
+            <input matInput placeholder="Password min 6 chars." type="password" name="password" required #password>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Repeat Password min 6 chars." type="Password" #password_confirmation required>
+          </mat-form-field>
+
+
+    	<div>
+    		<button mat-button matStepperPrevious>Back</button>
+</div><button mat-raised-button type="submit" color="primary" (click)="ActivateUser(phone.value,
+    	Address1.value,
+    	Address2.value,
+    	city.value,
+    	state.value,
+    	country.value,
+    	zipPost.value,
+    	dob.value,
+    	gender.value,
+        headset.value,
+    	FavouriteVRTitle.value,
+    	homeArcade.value,
+    	team.value,
+        password.value)">
+    	Save
+    </button>
+
+</mat-step>
+
+</mat-horizontal-stepper>
+</div>
+
+
+<!-- END -->
+
+<div *ngIf='userAuth === "Arcade Owner" && message === "valid"'>
+<mat-horizontal-stepper  #stepper>
+<mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="secondFormGroup">
+    	<ng-template matStepLabel>Personal Details</ng-template>
+    	<mat-form-field>
+    		<input type="tel" placeholder="Telephone No:" required #phone matInput >
+    	</mat-form-field>  
+    	<mat-form-field>
+    		<input type="text" placeholder="1st Line of Address" required #Address1 matInput>
+    	</mat-form-field>
+    	<mat-form-field>
+    		<input type="text" placeholder="2nd Line of Address" required #Address2 matInput>
+    	</mat-form-field>
+    	<mat-form-field>
+    		<input type="text" placeholder="City" required #city matInput>
+    	</mat-form-field>
+    	<mat-form-field>
+    		<input type="text" placeholder="State" required #state matInput>
+    	</mat-form-field>
+    	<mat-form-field>
+    		<input type="text" placeholder="Country" required #country matInput>
+    	</mat-form-field>
+    	<mat-form-field>
+    		<input type="text" placeholder="Zip Code" #zipPost required matInput>
+    	</mat-form-field>
+    	<mat-form-field>
+    		<span>DOB</span>
+    		<input type="Date" #dob  matInput required >
+    	</mat-form-field>
+    	<mat-form-field>
+    		<mat-select placeholder="Gender:" #gender required required matInput> 
+    			<mat-option value="Female">
+    				FEMALE
+    			</mat-option>
+    			<mat-option value="Male" >
+    				MALE
+    			</mat-option>
+    			<mat-option value="X">
+    				X
+    			</mat-option>
+    		</mat-select>
+    	</mat-form-field>
+    <mat-form-field>
+                <mat-select placeholder="Which Headset Provider you use:" #headset required  matInput> 
+                        <mat-option value="HTC Vive">
+                                HTC Vive
+                        </mat-option>
+                        <mat-option value="Oculus" >
+                                Oculus
+                        </mat-option>
+                        <mat-option value="PSVR">
+                                PSVR
+                        </mat-option>
+                         <mat-option value="Microsoft">
+                                Microsoft
+                        </mat-option>
+                 <mat-option value="Other">
+                              Other
+                        </mat-option>
+                </mat-select>
+        </mat-form-field>
+
+<mat-form-field>
+            <input matInput placeholder="Password min 6 chars." type="password" name="password" required #password>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Repeat Password min 6 chars." type="Password" #password_confirmation required>
+          </mat-form-field>
+
+    </form>
+    <div>
+    	<button mat-button matStepperNext>Next</button>
+    </div>
+
+
+</mat-step>
+<mat-step [stepControl]="secondFormGroup">
+    <ng-template matStepLabel>Gamer Details</ng-template>
+
+    <mat-form-field>
+    	<input type="text" placeholder="Favourite VR Title" #FavouriteVRTitle matInput>
+    </mat-form-field>
+
+
+    <mat-form-field>
+    	<input type="text" placeholder="Team name if any" required #team matInput> 
+    </mat-form-field>  
+    <p> 
+
+
+
+    	<div>
+    		<button mat-button matStepperPrevious>Back</button>
+    		<button mat-button matStepperNext>Next</button>
+    	</div>
+    </mat-step>
+
+
+    <mat-step [stepControl]="secondFormGroup">
+    	<ng-template matStepLabel>Arcade Details</ng-template>
+
+    	<mat-form-field>
+    		<input type="text" placeholder="Arcades Name" #Arcadesname matInput >
+    	</mat-form-field>
+    	<mat-form-field>
+    		<input type="text" placeholder="Arcades Email" #Arcadeemail matInput >
+    	</mat-form-field>   
+
+    	<mat-form-field>
+    		<input type="text" placeholder="Arcades Phone Number" #Arcadephone matInput >
+    	</mat-form-field>  
+
+    	<!-- TODO bring in from server list -->
+    	<mat-form-field>
+    		<input type="text" placeholder="Address 1" #ArcadeAddress1 matInput >
+    	</mat-form-field>    
+    	<mat-form-field>
+    		<input type="text" placeholder="Address 2" #ArcadeAddress2 matInput >
+    	</mat-form-field> 
+    	<mat-form-field>
+    		<input type="text" placeholder="City" #Arcadecity matInput >
+    	</mat-form-field> 
+    	<mat-form-field>
+    		<input type="text" placeholder="State" #Arcadestate matInput >
+    	</mat-form-field> 
+    	<mat-form-field>
+    		<input type="text" placeholder="Country" #Arcadecountry matInput >
+    	</mat-form-field> 
+    	<mat-form-field>
+    		<input type="text" placeholder="Zip Postal" #ArcadezipPost matInput >
+    	</mat-form-field> 
+    	<mat-form-field>
+    		<input type="text" #hours placeholder="Open Hours" matInput >
+    	</mat-form-field> 
+    	<mat-form-field>
+    		<textarea matInput placeholder="Description" #desc></textarea>
+    	</mat-form-field> 
+    	<mat-form-field>
+    		<input type="url" placeholder="Website" #website matInput >
+    	</mat-form-field> 
+    	<mat-form-field>
+    		<mat-label>License Type</mat-label>
+    		<mat-select #l placeholder="licensing:" >
+    			<mat-option *ngFor='let arcade of Liceenses' [value]="arcade.value"  matInput>
+    				{{arcade.viewValue}}
+    			</mat-option>
+    		</mat-select>
+    	</mat-form-field>
+
+
+    	<div>
+    		<button mat-button matStepperPrevious>Back</button>
+    		<button mat-button matStepperNext color="primary">Next</button>
+    	</div>
+    </mat-step>
+    <mat-step [stepControl]="fourthFormGroup" *ngIf='userAuth === "Arcade Owner"'>
+    	<ng-template matStepLabel>Arcade Social Info</ng-template>
+
+    	<mat-form-field>
+    		<input type="text" placeholder="Discord ID" #discord matInput >
+    	</mat-form-field> 
+
+    	<mat-form-field>
+    		<input type="text" placeholder="Twitter" #twitter matInput >
+    	</mat-form-field>
+
+    	<mat-form-field>
+    		<input type="text" placeholder="Twitch" #twitch matInput >
+    	</mat-form-field>
+
+    	<mat-form-field>
+    		<input type="text" placeholder="YouTube" #youtube matInput>
+    	</mat-form-field>
+    	<div>
+    		<button mat-raised-button type="submit" color="primary" (click)="UpdateArcadeUser(
+    		phone.value,
+    		Address1.value,
+    		Address2.value,
+    		city.value,
+    		state.value,
+    		country.value,
+    		zipPost.value,
+    		dob.value,
+    		gender.value,
+                headset.value,
+                password.value,
+    		FavouriteVRTitle.value,
+    		team.value,
+    		Arcadesname.value,
+    		Arcadeemail.value,
+    		Arcadephone.value,
+    		hours.value,
+    		ArcadeAddress1.value,
+    		ArcadeAddress2.value,
+    		Arcadecity.value,
+    		Arcadestate.value,
+    		Arcadecountry.value,    
+    		ArcadezipPost.value,
+    		desc.value,
+    		website.value,
+    		l.value,
+    		discord.value,
+    		twitter.value,
+    		twitch.value,
+    		youtube.value
+    		)">
+
+    		Save
+    	</button>
+    	<button mat-button matStepperPrevious>Back</button>
+    </div>
+</mat-step>
+</mat-horizontal-stepper>
+</div>
+
+
+
+
+</div>
+</mat-card>
+</div>
+</div>
+</div>
+</div>
+
+

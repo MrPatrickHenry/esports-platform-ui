@@ -1,0 +1,20 @@
+<div class="container">
+<h2 class="h2Val">Here are your Augumented Reality (AR) "Shinies!"</h2>
+
+<mat-card class="p-2" *ngIf="trophies else noTrophies">
+         <div class="Mediacontainer">
+                        <!-- width of .grid-sizer used for columnWidth -->
+                        <mat-grid-list cols="3">
+                            <div class="cards">
+                                    <img class="image mediaContent" #id src="https://storage.googleapis.com/filestorage_valvr2020/">
+                            </div>
+                        </mat-grid-list>
+                    </div>
+</mat-card>
+
+<ng-template #noTrophies>
+	<h3>No Trophies yet!</h3>
+	<p class="text-black">Make sure you sign up to tournaments, and keep trying!</p>
+	<a mat-raised-button color="primary" [routerLink]="'/tournaments'" class="accent">Tournaments</a>
+</ng-template>
+</div>

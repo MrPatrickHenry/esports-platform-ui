@@ -1,0 +1,114 @@
+<h1>Edit Tournament: {{tournamentItemData.name}}</h1>
+<div class="content">
+  <mat-form-field>
+    <input type="text" placeholder="Tournament Name" #name matInput value="{{tournamentItemData.name}}">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Tournament Type" #tt required value="{{tournamentItemData.eventType}}"> 
+          <mat-option value="1">
+            League
+          </mat-option>
+          <mat-option value="2" >
+            Championship
+          </mat-option>
+          <mat-option value="3">
+            Qualifier
+          </mat-option>
+
+          <mat-option value="4">
+            Round
+          </mat-option>
+
+        </mat-select>
+
+      </mat-form-field>
+<mat-list-item class="inputFields">
+        <mat-form-field>
+        <mat-select placeholder="League Type " #group required> 
+          <mat-option value="lbe">
+            LBE
+          </mat-option>
+          <mat-option value="home" >
+            Home
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-list-item>
+<mat-form-field>
+        <input type="datetime-local" placeholder="Launch Start Date" #lsd matInput value="{{tournamentItemData.launchStartDate | date}}">
+      </mat-form-field>  
+      <mat-form-field>
+        <input type="datetime-local" placeholder="Launch End Date" #led matInput value="{{tournamentItemData.launchEndDate | date}}">
+      </mat-form-field>
+      <mat-form-field>
+        <input type="datetime-local" placeholder="Start Date" #sd matInput value="{{tournamentItemData.startDate | date}}">
+      </mat-form-field>
+      <mat-form-field>
+        <input type="datetime-local" placeholder="End  Date" #ed matInput value="{{tournamentItemData.endDate | date}}">
+      </mat-form-field>
+
+  <mat-form-field>
+    <input type="text" placeholder="Tournament Description" #d matInput value="{{tournamentItemData.desc}}">
+  </mat-form-field>
+
+      <mat-form-field>
+        <input type="url" placeholder="Media Kit URL" #mk matInput value="{{tournamentItemData.mediaKit}}">
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Rules" #r matInput value="{{tournamentItemData.rules}}"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" placeholder="Reward" #rq matInput value="{{tournamentItemData.rewards}}">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Banner File ID" #b>
+          <mat-option *ngFor="let details of mediaSource" [value]="details.id" class="selectMedia" >
+
+            <img class="selectMedia" #id src="https://storage.googleapis.com/filestorage_valvr2020/{{details.path}}">
+            {{details.path}}
+          </mat-option>
+        </mat-select>   
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Picture ID" #p>
+          <mat-option *ngFor="let details of mediaSource" [value]="details.id" class="selectMedia" >
+            <img class="selectMedia" src="https://storage.googleapis.com/filestorage_valvr2020/{{details.path}}">{{details.path}}
+          </mat-option>
+        </mat-select>   
+      </mat-form-field>
+<mat-form-field>
+        <input type="text" placeholder="Picture ID" #p matInput value="{{tournamentItemData.pic1}}">
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" placeholder="Video URL" #v matInput value="{{tournamentItemData.video}}">
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" placeholder="Notes" #notes matInput value="{{tournamentItemData.notes}}">
+      </mat-form-field>
+      <mat-checkbox class="example-margin" #a required value="{{tournamentItemData.active}}" >Active </mat-checkbox>
+
+
+
+      <mat-divider></mat-divider>
+
+      <button mat-raised-button color="primary" (click)="editTournament(
+      name.value,
+      tt.value,
+      group.value,
+      lsd.value,
+      led.value,
+      sd.value,
+      ed.value,
+      d.value,
+      mk.value,
+      r.value,
+      rq.value,
+      b.value,
+      p.value,
+      v.value,
+      notes.value,
+      a.value)">
+      <i class="material-icons">
+      save</i></button>
+
+    </div>

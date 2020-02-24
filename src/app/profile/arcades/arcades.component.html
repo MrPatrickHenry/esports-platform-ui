@@ -1,0 +1,142 @@
+<div class="user-profile relative">
+<div class="profile-cover">
+   <img src="https://storage.googleapis.com/filestorage_valvr2020/{{arcadeData.logo}}" width="100%">
+</div>
+<div class="">
+<div fxLayout="row wrap" class="profile-w">
+<div fxFlex.gt-sm="25" fxFlex.gt-xs="25" fxFlex="20">
+</div>
+<div fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="80" class="user-links">
+<ul class="profile-menu">
+<!-- <li><a href="">Home Users<span class="block text-lg-center">217</span></a></li>
+ --><li>Teams<span class="block text-lg-center">{{stats.teams}}</span></li>
+<li>Tournaments Attended<span class="block text-lg-center">{{stats.tournaments}}</span></li>
+<!-- <li><a href="">Likes<span class="block text-lg-center">7</span></a></li>
+ --></ul>
+</div>
+<div fxFlex.gt-sm="25" fxFlex.gt-xs="25" fxFlex="100" class="align-self-center">
+<!--        <button type="button" class="UserActions-editButton edit-button EdgeButton EdgeButton--tertiary" data-scribe-element="profile_edit_button">
+<span class="button-text">Edit profile</span>
+</button> -->
+</div>
+</div>
+
+<div fxLayout="row wrap">
+<div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100" class="relative">
+<div class="profile-avatar">
+<img src="https://storage.googleapis.com/filestorage_valvr2020/{{arcadeData.logo}}" width="200" height="200" alt="user">
+</div>
+<div class="profile-info">
+
+<h3 class="profile-name"><strong>{{arcadeData.arcadeName}}</strong></h3>
+          
+<span><i class="fa fa-map-marker"></i> {{arcadeData.city}}, {{arcadeData.country}}</span>
+
+<span><i class="fas fa-external-link-alt"></i>
+<a href="{{arcadeData.website}}">{{arcadeData.website}}</a></span>
+<span><i class="fa fa-phone"></i>
+{{arcadeData.phone}}</span>
+<span><i class="fa fa-map-signs"></i><a style="width:79%;display: inline-block;" href="https://maps.google.com?q={{arcadeData.address1}}%20{{arcadeData.address2}}%20{{arcadeData.city}}%20{{arcadeData.state}}%20{{arcadeData.country}}%20{{arcadeData.zip_postal}}"><span class="accent">Get Directions</span></a></span>
+<span *ngIf="arcadeData.address1">{{arcadeData.address1}}<br></span>
+<span *ngIf="arcadeData.address2">{{arcadeData.address2}}<br></span>
+<span  *ngIf="arcadeData.city">	{{arcadeData.city}}<br></span>
+<span  *ngIf="arcadeData.state">	{{arcadeData.state}}<br></span>
+<span  *ngIf="arcadeData.country">	{{arcadeData.country}}<br></span>
+<span  *ngIf="arcadeData.zip_postal"> {{arcadeData.zip_postal}}</span>
+<span> {{arcadeData.hours | uppercase}}</span>
+<span *ngIf="arcadeData.youtube"><i class="fab fa-youtube"></i>
+<a  href="https://youtube.com/c/{{arcadeData.youtube}}">{{arcadeData.youtubeChannel}}</a></span>
+<span *ngIf="arcadeData.snapchat"><i class="fab fa-snapchat"></i>
+<a  href="https://snapchat.com/{{arcadeData.snapchat}}">{{arcadeData.snapchat}}</a></span>
+<span *ngIf="arcadeData.instagram"><i class="fab fa-instagram"></i>
+<a  href="https://instagram.com/{{arcadeData.instagram}}">{{arcadeData.instagram}}</a></span>
+
+<span *ngIf="arcadeData.facebook"><i class="fab fa-facebook"></i>
+<a  href="https://facebook.com/{{arcadeData.facebook}}">{{arcadeData.facebook}}</a></span>
+
+
+<span *ngIf="arcadeData.telegram"><i class="fab fa-telegram"></i>{{arcadeData.telegram}}</span>
+
+<span *ngIf="arcadeData.twitter"><i class="fab fa-twitter"></i>
+<a  href="https://twitter.com/{{arcadeData.twitter}}">{{arcadeData.twitter}}</a></span>
+
+<span *ngIf="arcadeData.twitch"><i class="fab fa-twitch"></i>
+<a  href="https://twitch.com/{{arcadeData.twitch}}">{{arcadeData.twitch}}</a></span>
+<span *ngIf="arcadeData.discord"><img src="https://img.icons8.com/material/18/000000/discord-logo--v1.png"> {{arcadeData.discord}}</span>
+
+</div>
+</div>
+
+<!--          arcade information
+-->         <div fxFlex.gt-sm="50" fxFlex.gt-xs="50" fxFlex="100" class="mt-1">
+<div class="arcade-content">
+<div class="profile-head">
+<h3 class="TournamentHeader">{{arcadeData.arcadeName}}</h3>
+</div>
+<div class="profile-cont">
+<ul class="pl-0">
+<li>
+<div fxLayout="row">
+
+<div class="pl-1 pr-1 profile-i" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="100" fxFlex.xl="100">
+
+<div class="profile-action">
+<!--           <a href=""><i class="fa fa-retweet"></i></a><a href=""><i class="fa fa-comment-o"></i></a><a href=""><i class="fa fa-heart-o"></i></a> -->
+</div>
+</div>
+</div>
+
+<div fxLayout="row">
+<div>
+<p class="text">{{arcadeData.description}}</p>
+</div>
+</div>
+
+</li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<!-- tournament if attending -->
+<!-- <div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100" class="upcomingTournaments-content">
+<div class="">
+<div class="profile-head">
+<h4 class="TournamentHeader">Upcoming Tournaments</h4>
+</div>
+<div class="profile-cont">
+
+
+<div class="example-2 card mat-pad mb-1" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="50">
+<div class="wrapper" style="background: url('assets/images/curve.jpg') center / cover no-repeat;">
+<div class="header">
+<div class="date">
+</div>
+<ul class="menu-content">
+
+<li><span><i class="material-icons">
+thumb_up
+</i>18</span></li>
+</ul>
+</div>
+<div class="data">
+<div class="content">
+<span class="author">Jane Doe</span>
+<h1 class="title"><a href="#">Even the tiny frog is spoilt by its mouth</a></h1>
+<p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, eveniet.</p>
+<a href="#" class="button">Read more</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div> -->
+
+<div fxFlex.gt-sm="25" fxFlex.gt-xs="50" fxFlex="100" class="align-self-center">
+</div>
+</div>
+</div>
+</div>
+

@@ -1,0 +1,154 @@
+ <div class="content">
+        <h1>Update Your Profile </h1>
+ 	<form>
+                <mat-list role="list">
+                        <mat-list-item class="inputFields">
+                                <mat-form-field>
+                                        <input type="text" placeholder="Full Name" #nameUpdate matInput value="{{ users.name }}">
+ 				</mat-form-field>
+ 			</mat-list-item>
+                        <mat-list-item class="inputFields">
+                                <mat-form-field>
+                                        <input type="email" placeholder="Email" #email matInput value="{{ users.email }}">
+ 				</mat-form-field>
+ 			</mat-list-item>
+                        <mat-list-item class="inputFields">
+                                <mat-form-field>
+                                        <input type="tel" placeholder="Telephone NO:" #phone matInput value="{{ users.phone }}">
+ 				</mat-form-field>  
+ 			</mat-list-item>
+                        <mat-list-item class="inputFields">
+                                <mat-form-field>
+                                        <input type="text" placeholder="1st Line of Address" #Address1 matInput value="{{ users.address1 }}">
+ 				</mat-form-field>
+ 			</mat-list-item>
+
+
+                        <mat-list-item class="inputFields">
+                                <mat-form-field>
+                                        <input type="text" placeholder="2nd Line of Address" #Address2 matInput value="{{ users.address2 }}">
+                                </mat-form-field>
+                        </mat-list-item>
+
+                        <mat-list-item class="inputFields">
+                                <mat-form-field>
+                                        <input type="text" placeholder="City" #city matInput value="{{ users.city }}">
+                                </mat-form-field>
+                        </mat-list-item>
+
+                        <mat-list-item class="inputFields">
+                                <mat-form-field>
+                                        <input type="text" placeholder="State" #state matInput value="{{ users.state }}">
+                                </mat-form-field>
+                        </mat-list-item>
+
+                        <mat-list-item class="inputFields">
+                                <mat-form-field>
+                                        <input type="text" placeholder="Country" #country matInput value="{{ users.country }}">
+                                </mat-form-field>
+                        </mat-list-item>
+
+                        <mat-list-item class="inputFields">
+                                <mat-form-field>
+                                        <input type="text" placeholder="Zip Code" #zipPost matInput value="{{ users.zip_postal }}">
+ 				</mat-form-field>
+ 			</mat-list-item>
+                        <mat-list-item class="inputFields">
+                                <mat-form-field>
+                                        <input type="Date" #dob matInput value="{{ users.dob }}">
+ 				</mat-form-field>
+ 			</mat-list-item>
+                        <mat-list-item class="inputFields">
+                                <mat-form-field>
+
+                                        <mat-select placeholder="Gender: {{ users.gender }}" #gender required matInput value="{{ users.gender }}"> 
+                                                <mat-option value="X">
+                                                        X
+ 						</mat-option>
+ 						<mat-option value="Female">
+                                                        FEMALE
+ 						</mat-option>
+ 						<mat-option value="Male" >
+                                                        MALE
+ 						</mat-option>
+ 					</mat-select>
+ 				</mat-form-field>
+ 			</mat-list-item>
+                        <mat-list-item class="inputFields">
+                            <mat-form-field>
+                                <mat-select placeholder="Which Headset Provider you use: {{ users.headset }}" #headset required  matInput> 
+                                        <mat-option value="HTC Vive">
+                                                HTC Vive
+                                        </mat-option>
+                                        <mat-option value="Oculus" >
+                                                Oculus
+                                        </mat-option>
+                                        <mat-option value="PSVR">
+                                                PSVR
+                                        </mat-option>
+                                        <mat-option value="Microsoft">
+                                                Microsoft
+                                        </mat-option>
+                                        <mat-option value="Microoft">
+                                                Microsfot
+                                        </mat-option>
+                                        <mat-option value="Other">
+                                          Other
+                                  </mat-option>
+                          </mat-select>
+                  </mat-form-field>  
+          </mat-list-item>                        
+          <mat-list-item class="inputFields">
+                <mat-form-field>
+                        <input type="text" placeholder="Gamer Tag" #gamerTag matInput value="{{ users.gamertag }}">
+                </mat-form-field>       
+        </mat-list-item>
+        <mat-list-item class="inputFields">
+                <mat-form-field>
+                        <input type="text" placeholder="Favourite VR Title" #FavouriteVRTitle matInput value="{{ users.favourite_VR_Title }}">
+                </mat-form-field>
+        </mat-list-item>
+        <form class="example-form">
+                <mat-list-item class="inputFields">
+                        <mat-form-field>
+                                <input type="text" placeholder="Home Arcade: {{ users.home_arcade }}" #homeArcade matInput [formControl]="myControl" [matAutocomplete]="auto">
+                                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                                {{option}}
+                                        </mat-option>
+                                </mat-autocomplete>
+                        </mat-form-field>
+                </mat-list-item>
+        </form>
+
+<!-- 
+
+
+<mat-form-field>
+<input type="text" placeholder="Team Name if any" #team matInput value="{{ users.Team }}"> 
+</mat-form-field>   -->
+<p> 
+
+
+        <!--    <button mat-raised-button type="submit" color="primary" (click)="onProfileSave(name.value)"> + </button> -->
+        <mat-list-item class="inputFields">
+                <button mat-raised-button type="submit" color="primary" (click)="onProfileSave(
+		nameUpdate.value,
+		email.value,
+		phone.value,
+		Address1.value,
+                Address2.value,
+                city.value,
+                state.value,
+                country.value,
+		zipPost.value,
+		dob.value,
+		gender.value,
+                headset.value,
+		gamerTag.value,
+		FavouriteVRTitle.value,
+		homeArcade.value)"> Update </button>
+	</mat-list-item>
+</mat-list><p>
+</form>
+</div>

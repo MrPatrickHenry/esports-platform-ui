@@ -1,0 +1,94 @@
+<mat-toolbar >
+    <mat-toolbar-row>
+<!--           <a mat-button [routerLink]="['/team/Invited']">  <span matBadge="4" matBadgeOverlap="false">Invited</span></a>
+-->          <a mat-button [routerLink]="['/team/Pending']">  <span matBadge="4" matBadgeOverlap="false">Pending Invites</span></a>
+<a mat-button [routerLink]="['/team/Approved']">  <span matBadge="4" matBadgeOverlap="false">Current Team</span></a>
+
+<a mat-button [routerLink]="['/team/Denied']">  <span matBadge="4" matBadgeOverlap="false">Denied/Rejected</span></a>
+
+</mat-toolbar-row>
+</mat-toolbar>
+<p>
+
+    <div class="mat-elevation-z8">
+
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+
+
+        <table mat-table matSort [dataSource]="dataSource">
+
+            <ng-container matColumnDef="profilePic">
+
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
+                <td mat-cell *matCellDef="let users">
+
+                    <button mat-button [matMenuTriggerFor]="menu">
+                        <i class="material-icons">more_vert</i>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="updateRoster(users.id,false)">Remove Player</button>
+                    </mat-menu>
+
+                    <img src='https://storage.googleapis.com/filestorage_valvr2020/{{users.profilePic}}' class="profilePic adminChoice">
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let users"> {{users.name}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="gamertag">
+                    <th mat-header-cell *matHeaderCellDef> Gamer Tag </th>
+                    <td mat-cell *matCellDef="let users"> 
+                    <a [routerLink]="['/player/profile/',users.gamertag]" class="accent">{{users.gamertag}}</a>    
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="City">
+                    <th mat-header-cell *matHeaderCellDef> City </th>
+                    <td mat-cell *matCellDef="let users"> {{users.city | uppercase}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Country">
+                    <th mat-header-cell *matHeaderCellDef> Country </th>
+                    <td mat-cell *matCellDef="let users"> {{users.country | uppercase}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef> Accept </th>
+                    <td mat-cell *matCellDef="let users">
+                        <form>
+                            <input type="hidden" value="{{users.id}}" #id mat-input>
+                            <div *ngIf='users.status === 2 '>
+                                <mat-checkbox [(ngModel)]="users.status" (change)="updateRoster(users.id,$event)" >
+                                </mat-checkbox>
+                            </div>
+                        </form>
+
+                        <span *ngIf='users.status === 1' style="color:green;">
+                            <i class="material-icons">done_all</i></span>
+
+
+                            <span *ngIf='users.status === 0' style="color:red;">
+                                <i class="material-icons">
+                                    clear
+                                </i></span>
+
+                            </td>
+
+                        </ng-container> 
+
+                <ng-container matColumnDef="updated_at">
+                    <th mat-header-cell *matHeaderCellDef> Updated </th>
+                    <td mat-cell *matCellDef="let users"> {{users.updated_at | date}} </td>
+                </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+
+                    <mat-paginator  [pageSize]="10" [pageSizeOptions]="[5, 10, 25,50,100]" showFirstLastButtons></mat-paginator>
+                </div>

@@ -1,0 +1,52 @@
+<div class="ngtt-se__container">
+<div class="ngtt-se__bracket-wrapper">
+<ng-container *ngFor="let winnersround of winnersBracket; let i = index">
+  <div class="ngtt-se__round-wrapper">
+    <ng-container *ngFor="let match of winnersround.matches">
+      <div class="ngtt-se__match-wrapper">
+        <div class="ngtt-se__match-component-container">
+<ng-container *ngTemplateOutlet="matchTemplate; context:{$implicit: match}">
+</ng-container>  <a class="ngtt_team-link"  mat-ripple="" color="primary" style="color:white; display:none;" href="/content-locker/video" ><i class="fas fa-eye"></i></a>
+
+<div class="ngtt__match-wrapper">
+
+  <ng-container *ngFor="let team of match.teams">
+    <div class="ngtt-team-wrapper">
+<div class="ngtt-team-logo">
+<a class="ngtt_team-link"  mat-ripple="" color="primary" href="/player/profile/{{team.name}}" >
+<img class="ngtt-team-icon" src =
+"https://storage.googleapis.com/filestorage_valvr2020/logos/Gs3ozvAG6tSteTJCWolBowD1C5JU1sFYAftEMjSW.png">
+</a>
+</div>
+
+      <div class="ngtt__team-name">
+<a class="ngtt_team-link"  mat-ripple="" color="primary" href="/player/profile/{{team.name}}" >{{team.name}}</a>
+      <span class="ngtt__team-score">{{team.score | number}}</span>
+
+</div>
+    </div>
+  </ng-container>
+</div>
+
+
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>
+<ng-container>
+  <div class="ngtt-se__round-wrapper">
+    <div class="ngtt-se__match-wrapper">
+      <div class="ngtt-se__finale-match-wrapper">
+        <div class="ngtt-se__finale-component-container">
+<ng-container *ngTemplateOutlet="matchTemplate; context:{$implicit: final.matches[0]}"></ng-container>
+        </div>
+        <div class="ngtt-se__match-component-container" *ngIf="final.matches.length > 1">
+          <ng-container *ngTemplateOutlet="matchTemplate; context:{$implicit: final.matches[1]}"></ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+</div>
+</div>

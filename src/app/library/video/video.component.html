@@ -1,0 +1,20 @@
+<mat-card>
+    <mat-card-title>
+        <h5 class="mt-0"><strong>Content Locker</strong> - Learn the Game, Win the Game</h5>
+    </mat-card-title>
+    <hr>
+    <div class="mb-2"></div>
+    <div fxLayout="row wrap">
+        <div fxFlex.md="33.33" fxFlex.lg="33.33" fxFlex.xl="33.33" *ngFor="let content of contentLockerItems" class="mat-pad mb-1">
+            <div class="hover-parent">
+                <img src="https://storage.googleapis.com/filestorage_valvr2020/{{content.thumbnail}}" alt="Thumbnail" />
+                <div class="hover-overlay">
+                    <div class="hover-overlay-content">
+                        <h3 mat-line>{{content.thumbnail}}</h3>
+                        <span mat-line>Gallery image: {{ content.id }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>

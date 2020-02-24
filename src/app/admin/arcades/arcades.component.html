@@ -1,0 +1,57 @@
+<mat-toolbar>
+<button (click)="dialogCreateArcade()">
+<i class="material-icons">add</i>
+</button>
+</mat-toolbar>
+
+
+<!-- TO DO functionality is needed -->
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+  <table mat-table matSort [dataSource]="dataSource">
+
+    <ng-container matColumnDef="arcadeName">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let arcade"> 
+<a href [routerLink]="['/arcade/profile/',arcade.arcadeName]" class="accent">{{arcade.arcadeName}}</a> </td>
+    </ng-container>
+
+
+        <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let arcade"> <a href="mailto:{{arcade.email}}" class="accent">{{arcade.email}}</a> </td>
+    </ng-container>
+
+
+        <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> Phone </th>
+      <td mat-cell *matCellDef="let arcade"> <a href="tel:{{arcade.phone}}" class="accent">{{arcade.phone}}</a></td>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef> Country </th>
+      <td mat-cell *matCellDef="let arcade"> {{arcade.country}} </td>
+    </ng-container>
+
+        <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef> City </th>
+      <td mat-cell *matCellDef="let arcade"> {{arcade.city}} </td>
+    </ng-container>
+
+
+        <ng-container matColumnDef="website">
+      <th mat-header-cell *matHeaderCellDef> Website </th>
+      <td mat-cell *matCellDef="let arcade"> <a href ="{{arcade.website}}" class="accent">{{arcade.website}}</a> </td>
+    </ng-container>
+
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator  [pageSize]="10" [pageSizeOptions]="[5, 10, 25,50,100]" showFirstLastButtons></mat-paginator>

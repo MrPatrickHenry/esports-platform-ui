@@ -1,0 +1,38 @@
+ <div class="content">
+<h3>Update your Profile</h3>
+ <form>
+ 		<mat-form-field>
+ 			<input type="text" placeholder="Full Name" #name matInput>
+ 		</mat-form-field>
+ 		<mat-form-field>
+ 			<input type="email" placeholder="Email" #email matInput>
+ 		</mat-form-field>
+ 		<mat-form-field>
+ 			<input type="tel" placeholder="Telephone NO:" #telephone matInput>
+ 		</mat-form-field>        
+ 		<mat-form-field>
+ 			<input type="Date" #dob matInput>
+ 		</mat-form-field>      
+ 			<mat-select placeholder="Gender" #gender required matInput>
+ 				<mat-option >
+ 					FEMALE
+ 				</mat-option>
+ 				<mat-option >
+ 					MALE
+ 				</mat-option>
+ 							<mat-option >
+ 					X
+ 				</mat-option>
+
+ 			</mat-select>
+ 		<!-- TODO bring in from server list -->
+ 		<mat-form-field>
+ 			<input type="text" placeholder="Home Arcade" #homeArcade matInput>
+ 		</mat-form-field>    
+ 		<mat-form-field>
+ 			<input type="team" placeholder="Team Name if any" #homeTeam matInput> 
+ 		</mat-form-field>  <p>
+
+ 			<button mat-raised-button type="submit" color="primary" (click)="signup(name.value,email.value,userType.value,gamerTag.value,password.value,password_confirmation.value)"> Update </button>
+  			</form>
+ 		</div>

@@ -1,0 +1,140 @@
+
+
+<div class="leaderboardCover">
+  <img src="https://miro.medium.com/max/3200/0*M-f9vRcCbTbq3jmK" class="artworkCover">
+</div>
+
+<!-- Side bar -->
+<div class="main-content" fxLayout="row" fxLayoutAlign="center start">
+  <div fxFlex.gt-sm="15" fxFlex.gt-xs="15" fxFlex="1">
+
+    <mat-nav-list class="messages-nav">   
+    <button mat-raised-button color="primary" (click)="dialogCreateTask()">New Task</button>
+ <!--      <a href="javascript:;" mat-list-item>
+        <i class="fas fa-tasks"></i>
+        <span>To Do</span>
+      </a>
+      <a href="javascript:;" mat-list-item>
+        <mat-icon class="mat-text-muted">stars</mat-icon>
+        <span>Priority</span>
+      </a>
+      <a href="javascript:;" mat-list-item>
+        <mat-icon class="mat-text-muted">check</mat-icon>
+        <span>Done</span>
+      </a> -->
+      <mat-divider></mat-divider>
+    </mat-nav-list>
+  </div>
+
+
+  <!-- end of sidebar -->
+  <div fxFlex.gt-sm="90" fxFlex.gt-xs="95" fxFlex="100">
+    <div class="messages-list">
+<!-- accordion for easier menu -->
+      <mat-accordion class="example-headers-align">
+<!-- Prep tasks -->
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h3>Event Preperation</h3>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="main-content item" *ngFor="let preptasks of eventPreperation">
+            <div class="header">
+              <div class="titleHolder">
+                <div class="taskTitle"><h4>{{preptasks.title}}</h4></div>
+<!--                 <div class="category"><span>
+ -->           <!--      <mat-form-field>
+  <mat-label>Staus</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let food of foods" [value]="food.value">
+      {{food.viewValue}}   
+       </mat-option>
+  </mat-select>
+</mat-form-field></span></div>  -->
+                <div class="category"><span>{{preptasks.priority}}</span></div>
+              </div>
+              <div class="todoItemAction">
+                <input type="hidden" value="{{preptasks.id}}" #taskid >
+                <mat-slide-toggle [(ngModel)]="preptasks.is_completed" (change)="done(taskid.value,$event)"></mat-slide-toggle>
+              </div>
+            </div>
+            <p class="description">{{preptasks.description}}</p>
+          </div>
+          <!-- end of the group -->
+        </mat-expansion-panel>
+
+<!-- social growth -->
+        <mat-expansion-panel >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h3>Social Growth</h3>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="main-content item" *ngFor="let socialtasks of socialGrowth">
+            <div class="header">
+              <div class="titleHolder">
+                <div class="taskTitle"><h4>{{socialtasks.title}}</h4></div> 
+                <div class="category"><span>{{socialtasks.priority}}</span></div>
+              </div>
+              <div class="todoItemAction">
+                                <input type="hidden" value="{{socialtasks.id}}" #taskid >
+
+                <mat-slide-toggle [(ngModel)]="socialtasks.is_completed" (change)="done(taskid.value,$event)"></mat-slide-toggle>
+              </div>
+            </div>
+            <p class="description">{{socialtasks.description}}</p>
+          </div>
+          <!-- end of the group -->
+        </mat-expansion-panel>
+
+<!-- Rules and Record -->
+        <mat-expansion-panel >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h3>Rules and Record</h3>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="main-content item" *ngFor="let documentationTasks of rulesRecord">
+            <div class="header">
+              <div class="titleHolder">
+                <div class="taskTitle"><h4>{{documentationTasks.title}}</h4></div> 
+                <div class="category"><span>{{documentationTasks.priority}}</span></div>
+              </div>
+              <div class="todoItemAction">
+              <input type="hidden" value="{{documentationTasks.id}}" #taskid >
+
+                <mat-slide-toggle [(ngModel)]="documentationTasks.is_completed" (change)="done(taskid.value,$event)"></mat-slide-toggle>
+              </div>
+            </div>
+            <p class="description">{{documentationTasks.description}}</p>
+          </div>
+          <!-- end of the group -->
+        </mat-expansion-panel>
+
+<!-- Post -->
+        <mat-expansion-panel >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h3>Post Tournament</h3>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="main-content item" *ngFor="let postTasks of postTournament">
+            <div class="header">
+              <div class="titleHolder">
+                <div class="taskTitle"><h4>{{postTasks.title}}</h4></div> 
+                <div class="category"><span>{{postTasks.priority}}</span></div>
+              </div>
+              <div class="todoItemAction">
+                              <input type="hidden" value="{{postTasks.id}}" #taskid >
+
+                <mat-slide-toggle [(ngModel)]="postTasks.is_completed" (change)="done(taskid.value,$event)"></mat-slide-toggle>
+              </div>
+            </div>
+            <p class="description">{{postTasks.description}}</p>
+          </div>
+          <!-- end of the group -->
+        </mat-expansion-panel>
+</mat-accordion>
+</div>
+</div>

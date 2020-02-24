@@ -1,0 +1,98 @@
+ <div class="content">
+ 	<h3>Update your Profile </h3>
+ 	<form>
+ 		<mat-form-field>
+ 			<input type="text" placeholder="Full Name" #nameUpdate matInput value="{{ users.name }}">
+ 		</mat-form-field>
+
+ 		<mat-form-field>
+ 			<input type="email" placeholder="Email" #email matInput value="{{ users.email }}">
+ 		</mat-form-field>
+ 		<mat-form-field>
+ 			<input type="tel" placeholder="Telephone NO:" #phone matInput value="{{ users.phone }}">
+ 		</mat-form-field>  
+ 		<mat-form-field>
+ 			<input type="text" placeholder="1st Line of Address" #Address1 matInput value="{{ users.Address1 }}">
+ 		</mat-form-field>
+
+
+ 		<mat-form-field>
+ 			<input type="text" placeholder="Zip Code" #zipPost matInput value="{{ users.Zip_Post }}">
+ 		</mat-form-field>
+
+ 		<mat-form-field>
+ 			<input type="Date" #dob matInput value="{{ users.dob }}">
+ 		</mat-form-field>
+
+ 		<mat-form-field>
+
+ 			<mat-select placeholder="Gender: {{ users.gender }}" #gender required matInput value="{{ users.gender }}"> 
+ 				<mat-option value="Female">
+ 					FEMALE
+ 				</mat-option>
+ 				<mat-option value="Male" >
+ 					MALE
+ 				</mat-option>
+ 				<mat-option value="X">
+ 					X
+ 				</mat-option>
+
+ 			</mat-select>
+ 		</mat-form-field>
+ 		<mat-form-field>
+ 			<input type="text" placeholder="Gamer Tag" #gamerTag matInput value="{{ users.gamerTag }}">
+ 		</mat-form-field> 	
+
+ 		<mat-form-field>
+ 			<input type="text" placeholder="Favourite VR Title" #FavouriteVRTitle matInput value="{{ users.FavouriteVRTitle }}">
+ 		</mat-form-field>
+
+<!-- <form class="example-form">
+<mat-form-field>
+  <input type="text" placeholder="Favourite VR Title" matInput [formControl]="myControlGames" [matAutocomplete]="autoGames">
+  <mat-autocomplete autoActiveFirstOption #autoGames="matAutocomplete">
+    <mat-option *ngFor="let game of filteredOptionsGames | async" [value]="game">
+      {{games}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+</form> -->
+
+<form class="example-form">
+
+<mat-form-field>
+  <input type="text" placeholder="Home Arcade" #homeArcade matInput [formControl]="myControl" [matAutocomplete]="auto">
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+      {{option}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+
+</form>
+
+
+
+
+ 		<mat-form-field>
+ 			<input type="text" placeholder="Team Name if any" #team matInput value="{{ users.Team }}"> 
+ 		</mat-form-field>  
+ 		<p> 
+
+
+ 			<!-- 	<button mat-raised-button type="submit" color="primary" (click)="onProfileSave(name.value)"> + </button> -->
+ 			<button mat-raised-button type="submit" color="primary" (click)="onProfileSave(
+ 			nameUpdate.value,
+ 			email.value,
+ 			phone.value,
+ 			Address1.value,
+ 			zipPost.value,
+ 			dob.value,
+ 			gender.value,
+ 			gamerTag.value,
+ 			FavouriteVRTitle.value,
+ 			homeArcade.value,
+ 			team.value)"> Update </button>
+ 			<p>
+ 			</form>
+ 		</div>

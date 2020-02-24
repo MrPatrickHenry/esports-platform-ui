@@ -1,0 +1,69 @@
+
+.artworkCover{
+    width:100%;
+    height:150px;
+}
+.mat-expansion-panel-header-description {
+    color: rgba(0, 0, 0, 87);
+}
+
+.text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mat-content {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.messages-list{
+    width:80%;
+    margin-left:5%;
+}
+
+h4{
+    margin:0;
+    width:80% !important;
+}
+
+.p-1{
+    padding:1rem !important;
+    width:80%;
+}
+.description{
+    width: 80%;
+    position: relative;
+    left: 0;
+}
+.titleHolder{
+    width:100%;
+    block:inline;
+    position:relative;
+}
+.item{
+    border-bottom: solid 1px grey !important;
+    width: 100%;
+    float: left;
+    position: relative;
+}
+
+.taskTitle{
+    width:80%;
+    float:left;
+    position: relative;
+}
+.category{
+    text-align:right;
+font-weight:700;}
+
+
+.todoItemAction{
+   width: 10%;
+   position: relative;
+   float: right;
+   text-align:right;
+}

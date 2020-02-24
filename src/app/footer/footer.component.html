@@ -1,0 +1,61 @@
+<mat-toolbar color="secondary" class="footer" *ngIf="!isMobile === true else notShow" >
+    <mat-toolbar-row>
+
+        <span style="margin-right:2%;"><img src="https://storage.googleapis.com/val-log/logo.png" class ="logo" alt="logo"></span>
+
+        <!-- This fills the remaining space of the current row -->
+        <div *ngIf="system">
+            <span class="example-fill-remaining-space">{{system.data.version}} Beta Season 4 &nbsp; </span> 
+        </div>
+        <span> Health </span>
+        <div *ngIf="system" else error >
+            <span style="color:green; font-size:30px;">•</span>
+        </div>
+        <ng-template #error>
+            <span style="color:red; font-size:30px;">•</span>
+        </ng-template>
+
+        <div class="info-block" style="color:#000;">
+            <ul>
+                <li>
+                    <a href="https://www.privacypolicygenerator.info/live.php?token=Iq1ujH7gBlbp1QTIu5MUYMAayzkTfXUZ" mat-icon-button aria-label="Privacy Policy" ><span class="accent">Privacy Policy</span></a>
+                </li>
+                <li>
+                    <a href="https://app.termly.io/document/terms-of-use-for-website/48213308-d1e0-4f9f-8442-eca31ce6d53c" mat-icon-button aria-label="TOS" class="accent"><span class="accent">TOS</span></a>
+                </li>
+                <li>
+                    <a href="https://app.termly.io/document/cookie-policy/6a66bc1a-aad6-4483-81c7-ad26d57e185d" mat-icon-button aria-label="Cookie Policy" class="accent"><span class="accent">Cookie Policy</span></a>
+                </li>
+
+                <li class="copyright">
+                    <!-- TODO date service  -->
+                    <span >VAL © {{copyrightDate}}</span>
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<ng-template #notShow>
+    <mat-toolbar [ngClass]="system" class="mobileHealth">
+<!-- <ul id="menu">
+
+<li><a mat-list-item [routerLink]="'/signin'" class="mat-ripple" mat-ripple=""> <i class="fas fa-sign-in-alt footer-button"></i>&nbsp; Login </a></li>
+
+
+<li><a mat-list-item [routerLink]="'/tournaments'"  style="width:20%;" class="mat-ripple footer-button" mat-ripple="" style="flex-direction: row; box-sizing: border-box; display: flex;">
+<mat-icon class="footer-button">sports_esports</mat-icon>  </a>
+<li>
+
+<li><a mat-list-item [routerLink]="'/directory'" class="mat-ripple" mat-ripple=""><i class="fas fa-map-marked-alt footer-button"></i></a></li>
+</ul>
+ -->
+<button mat-button  matTooltip="Sign In"
+        (click)="gosignIn()"><i class="fas fa-sign-in-alt"></i></button>
+<button mat-button matTooltip="Tournaments"
+         (click)="goTournaments()"><mat-icon class="footer-button">sports_esports</mat-icon></button>
+<button mat-button matTooltip="Arcade Directory"
+         (click)="goDirectory()"><i class="fas fa-map-marked-alt"></i></button>
+
+</mat-toolbar>
+</ng-template>

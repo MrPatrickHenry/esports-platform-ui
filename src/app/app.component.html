@@ -1,0 +1,171 @@
+<mat-toolbar color="primary" class="header" >
+<mat-toolbar-row >
+<button mat-icon-button>
+<mat-icon (click)="sidenav.toggle()" class="DesktopHamburger">menu</mat-icon>
+</button>
+<a [routerLink]="['/about']">
+
+<img src="https://storage.googleapis.com/val-log/logo.png" class="logo">
+</a>
+
+<span class="menu-spacer"></span>
+<!--  <div class="searchHeader">
+<mat-icon matPrefix>mode_edit</mat-icon> <input type=text placeholder="search" class="searchHeader mat-elevation-z12 "> 
+</div>-->
+
+<!-- Profile info -->
+<div class="profileHeader" style="width:100%;float:right;position:relative">
+
+<!-- profile image -->
+<div class="profile" *ngIf="userServices">
+<a [routerLink]="'/settings'">
+<img src="https://storage.googleapis.com/filestorage_valvr2020/{{userServices.profilePic}}" class="profileIcon"></a>
+</div>
+
+
+
+
+
+<!-- Notifications -->
+<!-- <div *ngIf='notificationCount'>
+<div *ngIf='notificationCount > 0' class="notifcations">
+<a class="mat-ripple"  mat-ripple="" color="primary" [routerLink]="['/notifications']">
+<mat-icon class="mat-icon material-icons notificationBell" role="img" aria-hidden="true">notifications</mat-icon>
+<span class="notification-label" >{{notificationCount}}</span>
+</a>
+</div>
+</div> -->
+
+<!-- Profile complete -->
+<div *ngIf='profileComplete'>
+<div *ngIf='profileComplete.accountInfo < 100' class="profileCompletion">
+<a [routerLink]="'/settings'" class="accent">Profile Complete</a>
+<span class="menu-badge mat-red" style="float:left;">{{profileComplete.accountInfo}}%</span>
+</div>
+</div>
+</div>
+
+
+
+<!-- <img src="https://cdn.countryflags.com/thumbs/united-kingdom/flag-round-500.png" class="flagIcon">
+-->
+</mat-toolbar-row>
+</mat-toolbar>
+
+
+<mat-sidenav-container>
+<mat-sidenav #sidenav>
+<!-- //mobile side  -->
+<div class="branding text-center">
+
+<a [routerLink]="['/about']">
+
+<img src="https://storage.googleapis.com/val-log/logo-White.png" class="mlogo">
+</a>
+</div>
+
+
+<div *ngIf='userServices'>
+
+<div class="mprofile" *ngIf="isloggedIn === true">
+<a class="mat-ripple"  mat-ripple="" color="primary" [routerLink]="['/player/profile/',userServices.gamertag]" (click)="sidenav.toggle()">
+
+<img src="https://storage.googleapis.com/filestorage_valvr2020/{{userServices.profilePic}}" class="mprofileIcon text-center">
+</a>
+
+<span class="name"> 
+<a class="mat-ripple"  mat-ripple="" color="primary" [routerLink]="['/player/profile/',userServices.gamertag]" (click)="sidenav.toggle()">{{userServices.gamertag}}</a></span>
+<div class="" *ngIf='profileComplete'>
+<div *ngIf='profileComplete.accountInfo < 100'>
+
+<span class="menu-badge mat-blue ng-star-inserted"><a [routerLink]="'/settings'">Profile complete</a> {{profileComplete.accountInfo}}%</span><br>
+</div>
+
+</div>
+</div>
+</div>
+<div *ngIf='userServices'>
+
+<div class="most-used text-center" *ngIf="isloggedIn === true">
+<!-- <a class="most-link mat-ripple"  mat-ripple="" color="primary" [routerLink]="'/about'" (click)="sidenav.toggle()">
+<mat-icon class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">home
+</mat-icon></a> -->
+<a class="most-link mat-ripple"  mat-ripple="" color="primary" [routerLink]="['/player/profile/',userServices.gamertag]" (click)="sidenav.toggle()">
+<mat-icon class="mat-ripple mat-icon notranslate material-icons mat-icon-no-color"  mat-ripple=""role="img" aria-hidden="true">person
+</mat-icon></a>
+<a class="most-link mat-ripple"  mat-ripple="" color="primary" [routerLink]="'/settings'" (click)="sidenav.toggle()">
+
+<mat-icon class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">settings
+</mat-icon></a>
+</div>
+</div>
+<!-- end mobile side  -->
+
+
+<mat-nav-list>
+
+<a mat-list-item [routerLink]="'/tournaments'" (click)="sidenav.toggle()" class="mat-ripple" mat-ripple="" style="flex-direction: row; box-sizing: border-box; display: flex;">
+<mat-icon>sports_esports</mat-icon>&nbsp; Tournaments </a>
+
+<!-- <a mat-list-item [routerLink]="'/content-locker/video'" (click)="sidenav.toggle()" class="mat-ripple" mat-ripple="" style="flex-direction: row; box-sizing: border-box; display: flex;">
+<i class="fas fa-photo-video"></i>&nbsp; Content Locker </a>
+
+ -->
+
+<!-- 
+<a mat-list-item [routerLink]="'/leaderboard'" (click)="sidenav.toggle()" class="mat-ripple" mat-ripple="" style="flex-direction: row; box-sizing: border-box; display: flex;">
+<mat-icon><i class="fas fa-trophy"></i></mat-icon>&nbsp;Leaderboard </a> -->
+
+<!-- <a mat-list-item [routerLink]="'/bracket'" (click)="sidenav.toggle()" class="mat-ripple" mat-ripple="" style="flex-direction: row; box-sizing: border-box; display: flex;">
+<i class="fas fa-poll-h"></i>&nbsp; Bracket </a>
+ -->
+
+<a mat-list-item [routerLink]="'/directory'" class="mat-ripple" mat-ripple="" (click)="sidenav.toggle()"><i class="fas fa-map-marked-alt"></i>&nbsp; Arcade Directory </a>
+<mat-divider></mat-divider>
+
+<!-- User driven features by feature Service       -->
+
+<mat-list-item *ngFor="let features of featureServices">
+<a mat-list-item [routerLink]="features.uri" (click)="sidenav.toggle()" class="mat-ripple" mat-ripple="">
+<i class="{{features.icon}}"></i>&nbsp; {{features.english_Label}} </a>
+</mat-list-item>
+
+
+</mat-nav-list>
+<mat-divider></mat-divider>
+
+
+<!-- Log out or system iinfromation if needed -->
+<mat-nav-list style="bottom:0; position:absolute;width:100%" *ngIf="isloggedIn === true else login">
+<a mat-list-item [routerLink]="'/logout'" (click)="sidenav.toggle()" class="mat-ripple" mat-ripple=""> <i class="fas fa-power-off"></i>&nbsp; Logout</a>
+</mat-nav-list>
+
+<ng-template #login>
+
+<mat-nav-list >
+<a mat-list-item [routerLink]="'/signin'" style="width:100%" (click)="sidenav.toggle()" class="mat-ripple" mat-ripple=""> <i class="fas fa-sign-in-alt"></i>&nbsp; Login </a>
+</mat-nav-list>
+
+</ng-template>
+
+
+</mat-sidenav>
+<mat-sidenav-content>
+<div style="height: 100vh;">
+<div class="wrapper">
+<router-outlet></router-outlet>
+</div>
+</div>
+</mat-sidenav-content>
+</mat-sidenav-container>
+<ngx-spinner bdColor="rgba(48, 30, 142, 0.8)"
+size="large"
+color="#fff"
+type="ball-8bits"
+>
+<p style="font-size: 20px; color: white">Loading...</p></ngx-spinner>
+<app-discord></app-discord>
+
+<app-feedback></app-feedback>
+
+<app-footer></app-footer>

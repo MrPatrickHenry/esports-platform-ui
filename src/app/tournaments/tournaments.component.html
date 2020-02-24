@@ -1,0 +1,186 @@
+<div class="container">
+                <h2 style="text-align: center;" class="h2Val"> Season 4</h2> <br> 
+<h2 style="text-align: center;" class="h2Val"> Coming Soon</h2>    
+
+
+</div>
+<!-- Tab Bracket menu -->
+<ng-container *ngIf='recordCountTournaments > 1'>
+	<mat-tab-group [selectedIndex]="1">
+
+		<mat-tab label="Open Tournaments ">
+			<ng-container *ngTemplateOutlet="open_tournaments"></ng-container>
+		</mat-tab>
+
+
+		<mat-tab label="Tournaments Attending"  >
+			<ng-container *ngTemplateOutlet="attending_tournaments"></ng-container>
+		</mat-tab>
+
+		<div *ngIf="users">
+			<mat-tab label="Tournaments Pending" *ngIf='users.usertype === "Arcade Owner"'>
+				<ng-container *ngTemplateOutlet="pending_tournaments"></ng-container>
+			</mat-tab>
+		</div>
+
+		<mat-tab label="Tournaments Attended"  > 
+			<ng-container *ngTemplateOutlet="attended_tournaments">  
+			</ng-container>
+		</mat-tab>
+
+
+	</mat-tab-group>
+</ng-container>
+
+     <!--    <ng-template #guest>
+                <h2 style="text-align: center;" class="h2Val"> Season 4 <br> Coming Soon</h2>
+                <app-signup-modal></app-signup-modal>
+
+        </ng-template>
+ -->
+<!-- Tournaments that are open to all users  -->
+
+<ng-template #open_tournaments matTabContent>
+	<div class="row" fxLayout="row wrap">
+		<!-- card for each event -->
+		<div class="example-2 card mat-pad mb-1" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="50" fxFlex.lg="33.33" fxFlex.xl="33.33" *ngFor="let events of tournaments">
+
+			<div class="wrapper" >
+				<img mat-card-image src="https://storage.googleapis.com/filestorage_valvr2020/{{events.path}}" style="width:100%; height:100%; z-index:1;background-color:grey;">
+				<div class="header">
+					<div class="date"><span style="font-weight:bold">Starts: </span> {{events.startDate | date}} 
+						<br><br>
+						<span style="font-weight:bold">Ends: </span>{{events.endDate | date}}
+					</div>
+					<ul class="menu-content">
+						<input type="hidden" #tid value="{{events.id}}">
+						<li>
+							<span  class="thumbsLikes">
+								<button (click)="likes(tid.value)" mat-raised-button color="primary"> <i class="material-icons">thumb_up</i></button>
+								<span class="likes">{{events.likes}}</span>
+							</span>
+						</li>
+					</ul>
+				</div>
+				<div class="data">
+					<div class="content">
+						<span class="author">
+							<h3>Sponsored By:{{events.sponsorName}}</h3>
+						</span>
+						<h1 class="title">
+							<a [routerLink]="['/tournament/',events.shortTag]" >{{events.name}}</a></h1>
+							<p class="text">{{events.summary}}</p>
+							<a mat-primary class="mr-1 mb-1 mat-raised-button" style="z-index:20"  [routerLink]="['/tournament/',events.shortTag]" >More Info</a>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- end of card event -->
+		</div>
+	</ng-template>
+
+<!-- <ng-template #guest>
+<h1 class="h2VAL">New Tournament Starting Soon</h1>
+<app-signup-modal></app-signup-modal>
+</ng-template> -->
+<!-- End of Tournaments that are open to all users  -->
+
+<!-- Tournaments that are user is attending to all users  -->
+<ng-template #attending_tournaments matTabContent>
+<div class="example-2 card mat-pad mb-1" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="50" fxFlex.lg="33.33" fxFlex.xl="33.33" *ngFor="let tournamentData of attendingTournament">
+
+
+
+
+<div class="wrapper">
+	<img mat-card-image src="https://storage.googleapis.com/filestorage_valvr2020/{{tournamentData.path}}" style="width:100%; height:100%; z-index:1;background-color:grey;">
+	<div class="header">
+		<div class="date"><span style="font-weight:bold">Starts: </span> {{tournamentData.startDate | date}} 
+			<br><br>
+			<span style="font-weight:bold">Ends: </span>{{tournamentData.endDate | date}}
+		</div>
+		<ul class="menu-content">
+			<input type="hidden" #tid value="{{tournamentData.id}}">
+			<li>
+				<span  class="thumbsLikes">
+					<button (click)="likes(tid.value)" mat-raised-button color="primary"> <i class="material-icons">thumb_up</i></button>
+					<span class="likes">{{tournamentData.likes}}</span>
+				</span>
+			</li>
+		</ul>
+	</div>
+	<div class="data">
+		<div class="content">
+			<span class="author">
+				<h3>Sponsored By:{{tournamentData.sponsorName}}</h3>
+			</span>
+			<h1 class="title">
+			{{tournamentData.name}}</h1>
+			<p class="text">{{tournamentData.summary}}</p>
+			<a mat-primary class="mr-1 mb-1 mat-raised-button" style="z-index:20"  [routerLink]="['/tournament/',tournamentData.shortTag]" >More Info</a>
+
+		</div>
+	</div>
+
+</div>
+
+
+
+
+</div>
+
+</ng-template>
+<!-- End of attending Tournaments that are open to all users  -->
+
+
+<!-- Tournaments that are pending to all users  -->
+
+<ng-template #pending_tournaments matTabContent>
+<h2 class="h2VAL">coming soon</h2>
+
+</ng-template>
+<!-- End of PendingTournaments that are open to all users  -->
+
+<!-- Tournaments that have been atteneded by user  -->
+
+<ng-template #attended_tournaments matTabContent>
+
+<div class="example-2 card mat-pad mb-1" fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="50" fxFlex.lg="33.33" fxFlex.xl="33.33" *ngFor="let tournamentsData of attendedTournament">
+
+
+<div class="wrapper">
+	<img mat-card-image src="https://storage.googleapis.com/filestorage_valvr2020/{{tournamentsData.path}}" style="width:100%; height:100%; z-index:1;background-color:grey;">
+	<div class="header">
+		<div class="date"><span style="font-weight:bold">Starts: </span> {{tournamentsData.startDate | date}} 
+			<br><br>
+			<span style="font-weight:bold">Ends: </span>{{tournamentsData.endDate | date}}
+		</div>
+		<ul class="menu-content">
+			<input type="hidden" #tid value="{{tournamentsData.id}}">
+			<li>
+				<span  class="thumbsLikes">
+					<button (click)="likes(tid.value)" mat-raised-button color="primary"> <i class="material-icons">thumb_up</i></button>
+					<span class="likes">{{tournamentsData.likes}}</span>
+				</span>
+			</li>
+		</ul>
+	</div>
+	<div class="data">
+		<div class="content">
+			<span class="author">
+				<h3>Sponsored By:{{tournamentsData.sponsorName}}</h3>
+			</span>
+			<a mat-primary style="z-index:20"  [routerLink]="['/tournament/',tournamentsData.shortTag]" > <h1 class="title">
+			{{tournamentsData.name}}</h1></a>
+			<p class="text">{{tournamentsData.summary}}</p>
+			<a mat-primary class="mr-1 mb-1 mat-raised-button" style="z-index:20"  [routerLink]="['/tournament/',tournamentsData.shortTag]" >More Info</a>
+
+		</div>
+	</div>
+
+</div>
+</div>
+</ng-template>
+<!-- End of Attened Tournaments that are open to all users -->

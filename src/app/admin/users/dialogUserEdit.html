@@ -1,0 +1,84 @@
+<h1>Edit User: {{users.name}}</h1>
+
+
+
+
+  <div class="content">
+
+ 	<form>
+ 		<mat-form-field>
+ 			<input type="text" placeholder="Full Name" #name matInput value="{{ users.name }}">
+ 		</mat-form-field>
+ 		<mat-form-field>
+ 			<input type="email" placeholder="Email" #email matInput value="{{ users.email }}">
+ 		</mat-form-field>
+ 		<mat-form-field>
+ 			<input type="tel" placeholder="Telephone NO:" #phone matInput value="{{ users.phone }}">
+ 		</mat-form-field>  
+ 		<mat-form-field>
+ 			<input type="text" placeholder="1st Line of Address" #Address1 matInput value="{{ users.Address1 }}">
+ 		</mat-form-field>
+ 		<mat-form-field>
+ 			<input type="text" placeholder="2nd Line of Address" #Address2 matInput value="{{ users.Address2 }}">
+ 		</mat-form-field>
+
+ 		<mat-form-field>
+ 			<input type="text" placeholder="City" #city matInput value="{{ users.city }}">
+ 		</mat-form-field>
+ 		<mat-form-field>
+ 			<input type="text" placeholder="Country" #country matInput value="{{ users.country }}">
+ 		</mat-form-field>
+
+ 		<mat-form-field>
+ 			<input type="text" placeholder="Zip Code" #zipPost matInput value="{{ users.Zip_Post }}">
+ 		</mat-form-field>
+
+ 		<mat-form-field>
+ 			<input type="Date" #dob matInput value="{{ users.dob }}">
+ 		</mat-form-field>      
+ 			<mat-select placeholder="Gender: {{ users.gender }}" #gender required matInput value="{{ users.gender }}"> 
+ 				<mat-option value="Female">
+ 					FEMALE
+ 				</mat-option>
+ 				<mat-option value="Male" >
+ 					MALE
+ 				</mat-option>
+ 							<mat-option value="X">
+ 					X
+ 				</mat-option>
+
+ 			</mat-select>
+ 		<!-- TODO bring in from server list-->
+ 	 		<mat-form-field>
+ 			<input type="text" placeholder="Gamer Tag" #gamerTag matInput value="{{ users.gamerTag }}">
+ 		</mat-form-field> 
+
+ 		<mat-form-field>
+ 			<input type="text" placeholder="Home Arcade" #homeArcade matInput value="{{ users.HomeArcade }}"> 
+ 		</mat-form-field>    
+ 		<mat-form-field>
+ 			<input type="team" placeholder="Team Name if any" #Team matInput value="{{ users.Team }}"> 
+ 		</mat-form-field>  <p>
+
+ 			<input type="hidden" value="{{users.id}}" #uid>
+
+ 			<button mat-raised-button type="submit" color="secondary"  class="mat-raised-button mat-button-base mat-primary" (click)="updateProfile(
+ 			uid.value,
+			name.value,
+ 			email.value,
+ 			phone.value,
+ 			zipPost.value,
+ 			Address1.value,
+ 			Address2.value,
+ 			city.value,
+ 			country.value,
+ 			dob.value,
+ 			gender.value,
+ 			homeArcade.value,
+ 			gamerTag.value,
+ 			Team.value)"> <i class="material-icons">
+save
+</i> </button>
+ 			
+  			</form>
+</div>

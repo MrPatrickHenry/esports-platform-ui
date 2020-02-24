@@ -1,0 +1,101 @@
+.advertContainer{
+width:90%;
+height:300px;
+text-align: center;
+align-content: center;
+position: relative;
+margin: 0 auto;
+margin-bottom:5%;
+}
+
+
+.ad{
+	width:100px;
+	height:100px;
+
+}
+
+
+/*.leaderboard-content{
+background:#fff;
+padding: 1rem;
+font-size: 14px;
+margin: 0;
+vertical-align: top;
+width: 60%;
+}
+*/
+
+
+
+
+
+.center {
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 100%;
+height: 100%;
+}
+
+.leaderboardCover
+{
+	background-image:url(../../assets/images/adverts/pistolWhip.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	width:100%;
+	height:300px;
+}
+
+.accent{
+	color:#4774BA;
+}
+
+.advert-info{
+	padding-top:1rem;
+	margin-left: 3rem;
+	color: #3b3b3b;
+	text-align: left;
+}
+
+.choice{
+	font-weight:700;
+}
+
+
+@media only screen 
+and (min-device-width : 375px) 
+and (orientation : portrait) {
+.leaderboardCover{
+        height:65px;
+        .leaderboard-content{
+background:#fff;
+padding: 1rem;
+font-size: 14px;
+margin: 0;
+vertical-align: top;
+width: 100%;
+background-size:cover;
+
+}
+}}
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+.leaderboardCover{
+	height:170px;
+background-size:cover;
+}
+
+/*.leaderboard-content{
+background:#fff;
+padding: 1rem;
+font-size: 14px;
+margin: 0;
+vertical-align: top;
+width: 100%;
+}*/
+
+
+}

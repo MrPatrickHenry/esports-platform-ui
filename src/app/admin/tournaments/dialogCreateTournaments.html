@@ -1,0 +1,199 @@
+<h1>Create Tournament</h1>
+<div class="content">
+  <form>
+    <mat-list role="list">
+      <mat-list-item class="inputFields">
+
+        <mat-form-field>
+          <input type="text" placeholder="Tournament Name" #name matInput>
+        </mat-form-field>
+      </mat-list-item>
+
+      <mat-list-item class="inputFields">
+        <mat-form-field>
+        <mat-select placeholder="Tournament Type" #tt required> 
+          <mat-option value="1">
+            League
+          </mat-option>
+          <mat-option value="2" >
+            Championship
+          </mat-option>
+          <mat-option value="3">
+            Qualifier
+          </mat-option>
+
+          <mat-option value="4">
+            Round
+          </mat-option>
+
+        </mat-select>
+      </mat-form-field>
+    </mat-list-item>
+
+      <mat-list-item class="inputFields">
+        <mat-form-field>
+        <mat-select placeholder="League Type " #group required> 
+          <mat-option value="lbe">
+            LBE
+          </mat-option>
+          <mat-option value="home" >
+            Home
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-list-item>
+
+
+    <mat-list-item class="inputFields">
+      <mat-form-field>
+        <input type="date" placeholder="Launch Start Date" #lsd matInput>
+      </mat-form-field>  
+    </mat-list-item>
+    <mat-list-item class="inputFields">
+      <mat-form-field>
+        <input type="date" placeholder="Launch End Date" #led matInput>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item class="inputFields">
+      <mat-form-field>
+        <input type="date" placeholder="Start Date" #sd matInput>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item class="inputFields">
+      <mat-form-field>
+        <input type="date" placeholder="End  Date" #ed matInput>
+      </mat-form-field>
+    </mat-list-item>
+
+
+    <mat-list-item class="inputFields">
+      <mat-form-field>
+        <textarea matInput placeholder="Description" #d matInput></textarea>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item class="inputFields">
+      <mat-form-field>
+        <textarea matInput placeholder="Summary" #summary matInput></textarea>
+      </mat-form-field>
+    </mat-list-item>
+
+
+
+
+
+    <mat-list-item class="inputFields">
+     <mat-form-field>
+      <input type="url" matInput placeholder="Media Kit" #mk matInput>
+    </mat-form-field>
+  </mat-list-item>
+
+  <mat-list-item class="inputFields">
+    <mat-form-field>
+      <textarea matInput  placeholder="Rules" #r matInput></textarea>
+    </mat-form-field>
+  </mat-list-item>
+  <mat-list-item class="inputFields">
+    <mat-form-field>
+      <input type="text" placeholder="Reward" #rq matInput>
+    </mat-form-field>
+  </mat-list-item>
+
+<mat-divider></mat-divider>
+<!-- Arcade only info -->
+  <mat-list-item class="inputFields">
+    <mat-form-field>
+      <input type="text" placeholder="Key" #key matInput>
+    </mat-form-field>
+  </mat-list-item>
+
+
+  <mat-list-item class="inputFields">
+    <mat-form-field>
+      <input type="text" placeholder="Password" #password matInput>
+    </mat-form-field>
+  </mat-list-item>
+
+
+  <mat-list-item class="inputFields">
+    <mat-form-field>
+      <input type="text" placeholder="Room" #room matInput>
+    </mat-form-field>
+  </mat-list-item>
+
+  <mat-divider></mat-divider>
+  <mat-list-item class="inputFields">
+    
+<mat-form-field>
+        <mat-select placeholder="Banner File ID" #b>
+                <mat-option *ngFor="let details of mediaSource" [value]="details.id" class="selectMedia" >
+                     
+<img class="selectMedia" #id src="https://storage.googleapis.com/filestorage_valvr2020/{{details.path}}">
+{{details.id}}
+                </mat-option>
+        </mat-select> 
+</mat-form-field>
+  </mat-list-item>
+  <mat-list-item class="inputFields">
+    <mat-form-field>
+      <input type="text" placeholder="Icon URL" #icond matInput>
+    </mat-form-field>
+  </mat-list-item>
+  <mat-list-item class="inputFields">
+    <mat-form-field>
+        <mat-select placeholder="Banner File ID" #p>
+                <mat-option *ngFor="let details of mediaSource" [value]="details.id" class="selectMedia" >
+                     
+<img class="selectMedia" #id src="https://storage.googleapis.com/filestorage_valvr2020/{{details.path}}">
+{{details.id}}
+                </mat-option>
+        </mat-select>   
+          </mat-form-field>
+  </mat-list-item>
+  <mat-list-item class="inputFields">
+    <mat-form-field>
+      <input type="text" placeholder="Video URL" #v matInput>
+    </mat-form-field>
+  </mat-list-item>
+  <mat-list-item class="inputFields">
+    <mat-form-field>
+      <textarea matInput  placeholder="Notes not shown to public" #notes matInput></textarea>
+    </mat-form-field>
+  </mat-list-item>
+  <mat-list-item class="inputFields">
+    <input type="checkbox" #a >Active		  
+  </mat-list-item>
+  <mat-list-item class="inputFields">
+    <button mat-raised-button color="primary" 
+    (click)="createTournament(
+        name.value,
+    tt.value,
+    group.value,
+    lsd.value,
+    led.value,
+    sd.value,
+    ed.value,
+    d.value,
+    summary.value,
+    mk.value,
+    r.value,
+    rq.value,
+    key.value,
+    password.value,
+    room.value,
+    b.value,
+    icond.value,
+    p.value,
+    v.value,
+    notes.value,
+    a.value)">
+
+    <i class="material-icons">
+      save
+    </i></button>
+  </mat-list-item>
+
+</mat-list>
+
+</form>
+
+</div>

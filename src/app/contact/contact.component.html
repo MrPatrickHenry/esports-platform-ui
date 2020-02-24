@@ -1,0 +1,66 @@
+ <mat-card>
+      <h2 class="text-center h2Val">Get In Touch</h2>
+   </mat-card>
+
+   <mat-card class="p-2">
+    <div class="mb-3">
+        <mat-card class="p-3">
+            <h2 class="font-weight-bold text-center mb-2 text-white">Drop us a Line</h2>
+            <form >
+                <div fxLayout="column" fxLayoutAlign="start stretch">
+                    <mat-form-field style="width: 100%">
+                        <input matInput placeholder="Name" type="text" name="name" required #name>
+                    </mat-form-field>
+                    <mat-form-field style="width: 100%">
+                        <input matInput placeholder="Company Name" type="text" name="cname" required #company>
+                    </mat-form-field>
+                    <mat-form-field style="width: 100%">
+                        <input matInput placeholder="Country" type="text" name="ctry" required #country>
+                    </mat-form-field>
+                    <mat-form-field style="width: 100%">
+                        <input matInput placeholder="E Mail" type="email" name="email" required #email>
+                    </mat-form-field>
+                <mat-form-field style="width: 100%" class="mb-2">
+                        <input matInput placeholder="Write Message" type="text" name="text1" required #message>
+                    </mat-form-field>
+                    <button style="width: 30%" class="mat-green" mat-raised-button (click)="messageSubmission(name.value,
+                    company.value,country.value,email.value,message.value)">Send</button>
+                </div>
+            </form>
+        </mat-card>
+
+    </div>
+    <div>
+    </div>
+</mat-card>
+
+               <mat-card>
+
+
+<div class="social-wrapper">
+    <ul>
+      <li>
+        <a href="https://twitter.com/valvr_esports?lang=en" target="_blank">
+          <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png" alt="Twitter Logo" class="twitter-icon"></a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/valvr_esports" target="_blank">
+          <img src="https://www.mchenryvillage.com/images/instagram-icon.png" alt="Instagram Logo" class="instagram-icon"></a>
+      </li>
+      <li>
+        <a href="https://www.facebook.com/valvresports" target="_blank">
+          <img src="https://en.facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png" alt="Facebook Logo" class="facebook-icon"></a>
+      </li>
+      
+      <li>
+        <a href="https://www.youtube.com/channel/UCHzmxuPLAW1TokB-wjp62xQ" target="_blank">
+          <img src="https://lh3.googleusercontent.com/j_RwVcM9d47aBDW5DS1VkdxUYCkDUCB6wZglv4x-9SmsxO0VaFs7Csh-FmKRCWz9r_Ef=w170" alt="Youtube Logo" class="youtube-icon"></a>
+      </li>
+      <li>
+        <a href="https://discordapp.com/invite/6sdeKM" target="_blank">
+          <img src="https://banner2.cleanpng.com/20180624/ypc/kisspng-discord-computer-icons-logo-user-internet-bot-discord-icon-5b3058973c0858.6115264115298950632459.jpg" alt="Discord Logo" class="youtube-icon"></a>
+      </li>
+    </ul>
+  </div>
+
+               </mat-card>

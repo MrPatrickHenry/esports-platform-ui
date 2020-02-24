@@ -1,0 +1,89 @@
+<div class="content">
+<h3>Update your Business Info</h3> 
+	<form>
+		<mat-form-field>
+			<input type="text" placeholder="Arcades Name" #name matInput value="{{ arcades.arcadeName }}">
+		</mat-form-field>
+		<mat-form-field>
+			<input type="text" placeholder="Arcades Email" #email matInput value="{{ arcades.email }}">
+		</mat-form-field>   
+
+		 		<mat-form-field>
+			<input type="text" placeholder="Arcades Phone" #phone matInput value="{{ arcades.phone }}">
+		</mat-form-field>  
+
+		<mat-form-field>
+			<input type="text" #hours placeholder="Open Hours" matInput value="{{ arcades.hours }}">
+		</mat-form-field>      
+	 		<!-- TODO bring in from server list -->
+		<mat-form-field>
+			<input type="text" placeholder="Address 1" #Address1 matInput value="{{ arcades.address1 }}">
+		</mat-form-field>    
+		 		<mat-form-field>
+			<input type="text" placeholder="Address 2" #Address2 matInput value="{{ arcades.Address2 }}">
+		</mat-form-field> 
+		 	<mat-form-field>
+			<input type="text" placeholder="City" #city matInput value="{{ arcades.city }}">
+		</mat-form-field> 
+		 	<mat-form-field>
+			<input type="text" placeholder="State" #state matInput value="{{ arcades.state }}">
+		</mat-form-field> 
+		 		 	<mat-form-field>
+			<input type="text" placeholder="Country" #country matInput value="{{ arcades.Country }}">
+		</mat-form-field> 
+		 	<mat-form-field>
+			<input type="text" placeholder="Zip Postal" #zipPost matInput value="{{ arcades.zip_postal }}">
+		</mat-form-field> 
+		<mat-form-field>
+			<input type="text" placeholder="Description" #desc matInput value="{{ arcades.description }}">
+		</mat-form-field> 
+		<mat-form-field>
+			<input type="url" placeholder="Website" #website matInput value="{{ arcades.website }}">
+		</mat-form-field> 
+		 <p>
+		 	<mat-form-field>
+<mat-label>License Type {{arcades.licensing}}</mat-label>
+<mat-select #licensing placeholder="Home Arcade: {{arcades.licensing}}" value="{{arcades.licensing}}" >
+<mat-option *ngFor="let arcade of Liceenses" [value]="arcade.value"  #homeArcade matInput>
+  {{arcade.viewValue}}
+</mat-option>
+</mat-select>
+</mat-form-field>
+<mat-divider></mat-divider>
+
+
+		<mat-form-field>
+			<input type="text" placeholder="Discord ID" #discord matInput value="{{ arcades.discord }}">
+		</mat-form-field> 
+
+		<mat-form-field>
+			<input type="text" placeholder="Twitter" #twitter matInput value="{{ arcades.twitter }}">
+		</mat-form-field>
+
+		<mat-form-field>
+			<input type="text" placeholder="Twitch" #twitch matInput value="{{ arcades.twitch }}">
+		</mat-form-field>
+
+		<mat-form-field>
+			<input type="text" placeholder="YouTube" #youtube matInput value="{{ arcades.youtubeChannel }}">
+		</mat-form-field>
+			<button mat-raised-button type="submit" color="primary" (click)="updateArcade(
+			name.value,
+			email.value,
+			phone.value,
+			hours.value,
+			Address1.value,
+			Address2.value,
+			 city.value,
+			state.value,
+			country.value,	
+			zipPost.value,
+			desc.value,
+			website.value,
+			licensing.value,
+			discord.value,
+			twitter.value,
+			twitch.value,
+			youtube.value)"> Update </button>
+			</form>
+		</div>

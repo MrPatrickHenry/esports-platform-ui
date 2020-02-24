@@ -1,0 +1,110 @@
+.profilePic{
+        width:30px;
+        height:30px;
+        border-radius: 50%;
+        background-color: white;
+}
+
+.text {
+        height: 70px;
+        margin: 0;
+        line-height:2 !important;
+        color:#221d1d  !important;
+    }
+
+.container {
+// TODO fix to use pagination to keep all above the fold
+        width: 960px;
+        height: auto;
+        padding: 20px;
+        background-color:#303030;
+        display:grid;
+        margin:0 auto;
+        margin-top:80px;
+        grid-template-rows: auto 1fr auto;
+        align-content: space-between;
+        a{
+                color:#FFF;
+                text-decoration: none;
+        }
+        ::ng-deep {
+                #cdk-overlay-0{
+                        position:absolute;
+                        right:0;
+                }
+                mat-form-field{
+                        display:block !important;
+                }
+                .mat-form-field{
+                        display: block !important;
+                }
+                .mat-dialog-container{
+                        border-radius:0px !important;
+                }
+                .header {
+                        display: flex;
+                        justify-content: center;
+                        margin: 0 0 20px;
+                }
+        
+                mat-card {
+                        width: auto;
+                        border-radius:0px;
+                        background: #424242;
+                        align-self: center;
+                        justify-self: center;
+                        color:#fff;
+                        box-shadow: 0 2px 1px -1px rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 1px 3px 0 rgba(0,0,0,.12);
+                        .content {
+                                width: 90%;
+                                margin: 0 auto;
+
+                                button {
+                                        margin-top: 15px;
+                                        border-radius:0px;
+                                }
+                        }
+                        .auth-card{
+                                padding:20px;
+                                border-radius:0px;
+
+                        }
+
+
+                        mat-card-actions {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                margin: 0;
+                                .links {
+                                        & > :last-of-type {
+                                                margin-left: 15px;
+                                        }
+                                }
+                        }
+                }
+
+                form {
+                        display: grid;
+                        width: 100%;
+                }
+                .bottom-links {
+                        display: flex;
+                        padding: 0 24px;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin: 0;
+                        .links {
+                                & > :last-of-type {
+                                        margin-left: 15px;
+                                }
+                        }
+                }
+
+                .link-sign-up, .link-sign-in {
+                        text-align: center;
+                        margin-top: 15px;
+                        font-weight: 500;
+                }
+        }
+}

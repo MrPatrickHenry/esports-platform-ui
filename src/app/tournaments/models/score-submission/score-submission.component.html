@@ -1,0 +1,113 @@
+ <h1>Submit Score</h1>
+ <div class="content">
+
+        <form  [formGroup]="form" ng-model="submit">
+        <mat-list-item class="inputFields">
+
+                <mat-form-field>
+
+                        <mat-select placeholder="Stage" #stage  required matSelect> 
+                                <mat-option value="Round1">
+                                        Round1
+                                </mat-option>
+                                <mat-option value="Round2" >
+                                        Round 2
+                                </mat-option>
+                                <mat-option value="Round3">
+                                        Round 3
+                                </mat-option>
+                                <mat-option value="Semifinals">
+                                        Semifinals
+                                </mat-option>
+                                <mat-option value="Quarterfinals">
+                                        Quarterfinals
+                                </mat-option>
+                                <mat-option value="Finals">
+                                        Finals
+                                </mat-option>
+                        </mat-select>
+                </mat-form-field>
+            </mat-list-item>
+            <mat-list-item class="inputFields">
+
+<!--            competitors 
+-->             
+<mat-form-field>
+        <mat-select placeholder="MrPatrickHenry" #homePlayer  matSelectrequired formControlName="homePlayer">
+                <mat-option *ngFor="let details of competitors" [value]="details.gamerTag" >
+                        {{details.gamerTag}}
+                </mat-option>
+        </mat-select> 
+</mat-form-field>
+            </mat-list-item>
+            <mat-list-item class="inputFields">
+<!-- <mat-form-field>
+        <mat-select placeholder="Opponent" #opponenet  matSelect required formControlName="opponenet">
+                <mat-option *ngFor="let details of competitors" [value]="details.gamerTag" >
+                        {{details.gamerTag}}
+                </mat-option>
+        </mat-select>
+</mat-form-field> -->
+
+
+<!--            Score File upload
+-->             
+
+        <!--            end of score file upload -->
+            </mat-list-item>
+            <mat-list-item class="inputFields">
+ <mat-form-field>
+    <input matInput placeholder="Result for Match1" #matchScore0 required="true">
+  </mat-form-field>
+            </mat-list-item>
+            <mat-list-item class="inputFields">
+ <mat-form-field>
+    <input matInput placeholder="Result for Match2" #matchScore1 required="true">
+  </mat-form-field>
+            </mat-list-item>
+      <!--       <mat-list-item class="inputFields">
+
+ <mat-form-field>
+    <input matInput placeholder="Result for Match3" #matchScore2 required="true">
+  </mat-form-field>
+              </mat-list-item>
+            <mat-list-item class="inputFields">
+        <label>Tie Breaker Results</label>
+        <mat-divider></mat-divider>
+            </mat-list-item>
+            <mat-list-item class="inputFields">
+ <mat-form-field>
+    <input matInput placeholder="Result for Match4" #matchScore3>
+  </mat-form-field>
+            </mat-list-item>
+            <mat-list-item class="inputFields">
+ <mat-form-field>
+    <input matInput placeholder="Result for Match5" #matchScore4>
+  </mat-form-field>
+            </mat-list-item>
+            <mat-list-item class="inputFields">
+<mat-form-field> -->
+<!-- <mat-select placeholder="Winner" #winner matSelect required formControlName="winner">
+                        <mat-option *ngFor="let details of competitors" [value]="details.gamerTag" >
+                                {{details.gamerTag}}
+                        </mat-option>
+                </mat-select> 
+        </mat-form-field>
+            </mat-list-item>-->
+<!--             <mat-list-item class="inputFields">
+        <mat-form-field>
+                <textarea  placeholder="Comments" #comments matInput formControlName="comments"></textarea>
+        </mat-form-field>
+                    </mat-list-item> -->
+            <mat-list-item class="inputFields">
+<label>Upload Screenshots: </label>
+        <input id="cin" name="cin" type="file" (change)="fileChangeEvent($event)" placeholder="Upload a file..." multiple/>
+                    </mat-list-item>
+            <mat-list-item class="inputFields">
+        <button type="button" mat-raised-button color="primary" (click)="upload()">
+                <i class="glyphicon glyphicon-open-file"></i>&nbsp;Upload
+        </button>
+                    </mat-list-item>
+</form>
+</div>
+

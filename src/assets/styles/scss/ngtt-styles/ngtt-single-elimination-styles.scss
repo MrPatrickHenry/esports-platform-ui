@@ -1,0 +1,178 @@
+@import "ngtt-reset";
+@import "ngtt-variables";
+
+
+.ngtt-se__container {
+/*  background-color: $ngtt-background-color;
+*/  display: inline-block;
+  box-sizing: border-box !important;
+}
+
+
+.ngtt-team-wrapper{
+  display:flex;
+  width:100%;
+  position:relative;
+  margin-bottom:6%;
+}
+
+
+.ngtt__match-wrapper{
+  width:100%;
+}
+
+.ngtt-team-logo{
+  margin-right:5%;
+width:25px;
+height:25px;
+background-color:white;
+left:0;
+position:relative;
+}
+
+.ngtt-team-icon{
+width:100%;
+height:100%;
+background-color:white;
+left:0;
+position:relative;
+}
+
+.ngtt_team-link{
+}
+
+.ngtt__team-name{
+  color:#fff;
+float: right;
+font-size: 100%;
+font-weight: bold;
+  font-family:"Futura", futura-pt,"Trebuchet MS", Helvetica, sans-serif !important;
+width:100%;
+
+}
+
+
+.ngtt__team-score{
+  color:#fff;
+position:absolute;
+right:0;
+}
+
+.ngtt-se__match-component-container {
+  display: flex;
+  height: $ngtt-match-wrapper-height;
+  width: 350px;
+  padding:8%;
+  background: $ngtt-match-container-background;
+  box-sizing: border-box !important;
+}
+
+// winners bracket
+.ngtt-se__bracket-wrapper {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box !important;
+}
+
+.ngtt-se__round-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-width: 350px;
+  box-sizing: border-box !important;
+}
+
+.ngtt-se__match-wrapper {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  height: 115px;
+  width: 350px;
+  padding: $ngtt-vertical-match-padding $ngtt-round-gutters;
+  position: relative;
+  box-sizing: border-box !important;
+  // every bracket line
+  &::after {
+    display: flex;
+    flex-grow: 1;
+    right: 0;
+    position: absolute;
+    width: $ngtt-round-gutters;
+    height: 50%;
+    border-right: $ngtt-bracket-line-width solid $ngtt-line-color-main;
+    content: '';
+    box-sizing: border-box !important;
+  }
+
+  &::before {
+    display: flex;
+    flex-grow: 1;
+    left: 0;
+    top: 50%;
+    position: absolute;
+    width: $ngtt-round-gutters;
+    border-top: $ngtt-bracket-line-width solid $ngtt-line-color-main;
+    content: '';
+    box-sizing: border-box !important;
+  }
+
+  &:nth-child(odd) {
+    &::after {
+      top: 50%;
+      border-top-right-radius: $ngtt-bracket-border-radius;
+      border-top: $ngtt-bracket-line-width solid $ngtt-line-color-main;
+    }
+  }
+
+  &:nth-child(even) {
+    &::after {
+      top: 0;
+      border-bottom-right-radius: $ngtt-bracket-border-radius;
+      border-bottom: $ngtt-bracket-line-width solid $ngtt-line-color-main;
+    }
+  }
+
+  &:first-child:last-child {
+    &::after {
+      display: none;
+    }
+  }
+
+  .ngtt-se__round-wrapper:first-child > & {
+    &::before {
+      display: none;
+    }
+  }
+}
+
+//final match
+.ngtt-se__finale-match-wrapper {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  height: $ngtt-match-wrapper-height + 2 * $ngtt-vertical-match-padding;
+  width: $ngtt-match-wrapper-width + 2* $ngtt-round-gutters;
+  padding: $ngtt-vertical-match-padding $ngtt-round-gutters;
+  position: relative;
+  box-sizing: border-box !important;
+
+  & > .ngtt-se__finale-component-container {
+    display: block;
+/*    height: $ngtt-match-wrapper-height;
+*/    width: $ngtt-match-wrapper-width;
+    background-color: $ngtt-match-container-background;
+/*    margin-bottom: 2*$ngtt-vertical-match-padding;
+*/  }
+
+  &::before {
+    display: flex;
+    flex-grow: 1;
+    left: 0;
+    top: 50%;
+    position: absolute;
+    width: $ngtt-round-gutters;
+    border-top: $ngtt-bracket-line-width solid $ngtt-line-color-main;
+    content: '';
+  }
+}

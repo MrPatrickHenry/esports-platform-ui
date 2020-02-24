@@ -1,0 +1,52 @@
+$blue: #05abe0;
+
+.grad-blue {
+    background: linear-gradient(58deg, #f44336, #673ab7);
+    color: #fff;
+}
+
+.h2Val{
+ font-size: 2em !important;
+ text-align: center;
+ text-transform: uppercase;
+ font-weight:700;
+ color:white !important;
+ width: 55%;
+float: left;
+}
+
+
+.leaderboardCover
+{
+
+        width:100%;
+        height:auto;
+        max-height:400px;
+}
+
+.text{
+	 white-space: pre-wrap;
+font-family: "Futura", futura-pt,"Trebuchet MS", Helvetica, sans-serif;
+        line-height:1.2 !important;
+        color:#221d1d  !important;
+        height: 100%;
+padding-bottom: 10%;
+}
+
+.advertContainer{
+	max-width: 350px;
+
+height: auto;
+
+position: relative;
+
+margin: 0 auto;
+
+top: 15%;
+margin-bottom:5%;
+}
+
+.ad{
+	width:350px;
+}
+

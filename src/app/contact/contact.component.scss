@@ -1,0 +1,154 @@
+.text{
+        font-size:18px;
+        line-height:1.5;
+        padding:2%;
+}
+
+.mat-card{
+        padding:2% !important;
+        border-radius: 0px !important;
+}
+
+.growthTitle{
+        font-size: 24px;
+        margin-bottom:2%;
+        text-align:center;
+        color:white !important;
+}
+
+.growthIcon{
+        margin: 0 auto;
+position: relative;
+width: 100%;
+text-align:center;
+margin-bottom:2%;
+}
+
+
+.numbers{       
+        font-size:5rem;
+        text-align:center;
+        width:100%;
+        display:block;
+        margin-bottom:2%
+}
+
+.titles{
+                text-align:center;
+        width:100%;
+        display:block
+}
+
+.social {
+    position: relative;
+    height: 3em;
+    width: 13.5em;
+    margin: 90px 40%;
+    }
+.container{
+min-width:90% !important;
+height:auto;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+  margin-left:5%;
+}
+
+.grad-blue {
+    background: linear-gradient(58deg, #f44336, #673ab7) ;
+    color: #fff;
+}
+
+.grad-green {
+    background: linear-gradient(58deg, #009688, #673ab7) !important;
+    color: #fff;
+}
+
+.grad-red {
+    background: linear-gradient(58deg, #f44336, #673ab7);
+    color: #fff;
+}
+
+#social-wrapper {
+    text-align: center;
+
+}
+
+/*Social Media Icons*/
+.social-wrapper {
+    text-align: center;
+        margin: 0 auto;
+position: relative;
+width: 21%;
+}
+
+.social-wrapper ul li {
+    display: inline;
+    margin: 0 5px;
+}
+
+.twitter-icon,
+.facebook-icon,
+.instagram-icon,
+.linkedin-icon,
+.googleplus-icon,
+.youtube-icon,
+.foursquare-icon{
+    margin-top: .625em;
+    width: 40px;
+    height: 40px;
+    opacity: .6;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+  border-radius: 25px;
+}
+
+.twitter-icon:hover,
+.facebook-icon:hover,
+.instagram-icon:hover,
+.linkedin-icon:hover,
+.googleplus-icon:hover,
+.youtube-icon:hover,
+.foursquare-icon:hover {
+    opacity: 1.0;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+
+
+
+
+.facebook {
+    background: #155b9d;
+    left: 0;
+    top: 0;
+        color:white;
+        padding:2%;
+
+}
+
+.twitter {
+    background: #1a9ec4;
+    bottom: 0;
+    left: 25%;
+    color:white;
+            padding:2%;
+
+}
+
+.pinterest {
+    background: #e11a30;
+    left: 50%;
+    top: 0;
+        color:white;
+                padding:2%;
+
+
+}

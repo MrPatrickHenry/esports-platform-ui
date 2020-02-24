@@ -1,0 +1,27 @@
+<!-- Competition Bracket links -->
+<ng-template #seaonsTitle>
+        <div class="container">
+        <h2 style="text-align: center;" class="h2Val"> VAL VR Titles</h2>
+        </div>
+</ng-template>
+        <!-- Open Tournaments tab -->
+<div fxLayout="row wrap" class="profile-w">
+
+<div fxFlex.sm="100" fxFlex.xs="100" fxFlex.md="33.33" fxFlex.lg="33.33" fxFlex.xl="33.33" fxFlex="100" class="m-gap p-gap">
+  <mat-card class="p-1 mat-elevation-z8">
+  <mat-card-header>
+    <mat-card-title><a class="mat-ripple"  mat-ripple="" color="primary" [routerLink]="['/title/',titles.shortTag]"><h3>{{titles.name}}</h3></a></mat-card-title>
+    <mat-card-subtitle>{{titles.game_Type}}</mat-card-subtitle>
+  </mat-card-header>
+<!--      <img mat-card-image  src="https://storage.googleapis.com/filestorage_valvr2020/{{titles.pic1}}">
+ -->
+  <mat-card-content>
+    <p class="text">
+{{titles.desc}}    </p>
+  </mat-card-content>
+  <mat-card-actions>
+<a class="mat-ripple"  mat-ripple="" color="primary" [routerLink]="['/title/',titles.shortTag]">More info</a>
+  </mat-card-actions>
+
+  </mat-card>
+</div>

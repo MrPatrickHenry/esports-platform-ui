@@ -1,0 +1,41 @@
+ <div class="content">
+ 	<img #id src="https://storage.googleapis.com/filestorage_valvr2020/{{usersMediaID.path}}"  (click)="setProfilePicture(id.value)" style="height:50%"><br>
+ 	<span><strong>Uploaded:</strong>{{usersMediaID.created_at | date}}</span><br>
+ 	<span><strong>Updated:</strong>{{usersMediaID.updated_at | date}}</span>
+
+ 	<form class="buttons">
+
+ 		<!-- TODO setting should be agnostic to fucntion been called  -->
+ 		<input type="hidden" value="{{usersMediaID.id}}" #id>
+ 		<button class="mediaButton" mat-raised-button color="primary" aria-label="Profile Pic Set" (click)="setProfilePicture(id.value)">
+ 		Set as Profile Picture    </button>
+
+                <button class="mediaButton" mat-raised-button color="primary" aria-label="Cover Art Set" (click)="setCoverPicture(id.value)">Set as Cover board</button>
+
+ 		<div *ngIf='userAuth === "Arcade Owner"'>
+ 			<button class="mediaButton" mat-raised-button color="accent" aria-label="Business Logo Set" (click)="setBusinessLogo(id.value)">
+ 			Set as Arcade Logo		</button>
+ 		</div>
+
+                <div *ngIf='userAuth === "Arcade Owner"'>
+                        <button class="mediaButton" mat-raised-button color="accent" aria-label="Set Arcade Header" (click)="setArcadeCoverboard(id.value)">
+                        Set as Arcade Coverboard
+                    </button>
+                </div>
+
+                <div *ngIf='userAuth === "valAdmin"'>
+                        <button class="mediaButton" mat-raised-button color="accent" aria-label="Business Logo Set" (click)="setBusinessLogo(id.value)">
+                        Set as Tournament Coverboard
+                    </button>
+                </div>
+
+
+ 		<div *ngIf='teamID > 1'>
+ 			<button class="mediaButton" mat-raised-button color="accent" aria-label="Team Logo Set" (click)="setTeamLogo(id.value)">
+ 			Set as Team Logo		</button>
+ 		</div>
+ 		<button class="mediaButton" mat-raised-button color="warn" aria-label="Delete File" (click)="deleteMedia(id.value)">
+ 			Delete
+ 		</button>
+ 	</form>
+ </div>

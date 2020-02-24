@@ -1,0 +1,20 @@
+
+.smallCard{
+width: 150px;
+padding: 2% !important;
+top: 12%;
+right:0%;
+z-index: 20;
+border-radius: 0px;
+float: right;
+position: fixed;
+line-height: 1.5;
+}
+
+
+//mobile view
+@media (max-width: 720px) {
+.smallCard{
+	display:none;
+}
+}
